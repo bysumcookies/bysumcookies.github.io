@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@1,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2"><link rel="shortcut icon" href="/favicon.ico?v=2" sizes="any"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=2"><link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
 <style>
-:root{--ink:#151515;--muted:#858585;--line:#e8e8e8;--content:1240px;--side:24px;--logo-column:264px;--header-gap:16px;--header-tool:42px;--bg-network:#050505;--bg-aws:#c8d8eb;--bg-portfolio:#e8d3dc;--bg-certification:#d9d9e1}
+:root{--ink:#151515;--muted:#858585;--line:#e8e8e8;--content:1240px;--side:24px;--logo-column:264px;--header-gap:16px;--header-tool:42px;--bg-network:#050505;--bg-security:#403758;--bg-aws:#c8d8eb;--bg-portfolio:#e8d3dc;--bg-certification:#d9d9e1}
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:#fff;color:var(--ink);font-family:Inter,"Pretendard","Apple SD Gothic Neo","Noto Sans KR",-apple-system,BlinkMacSystemFont,Arial,sans-serif;-webkit-font-smoothing:antialiased}
@@ -54,13 +54,14 @@ a{color:inherit;text-decoration:none}button,input{font:inherit}button{cursor:poi
 .card-art,.card-scrim,.card-all{position:absolute;inset:0;display:block}
 .card-art{z-index:-3;pointer-events:none}.card-visual{display:block;width:100%;height:100%;object-fit:cover;object-position:center;pointer-events:none;transform:none!important;max-width:none}
 .card-scrim{z-index:-2;pointer-events:none}
-.card-network .card-scrim{background:linear-gradient(90deg,#000 0%,#0008 29%,transparent 60%)}
+.card-network .card-scrim{background:linear-gradient(270deg,#000b 0%,#0004 36%,transparent 70%)}
+.card-security .card-scrim{background:linear-gradient(90deg,rgba(20,15,33,.35),rgba(20,15,33,.08) 40%,transparent 68%)}
 .card-aws .card-scrim{background:linear-gradient(270deg,rgba(23,42,67,.54),rgba(23,42,67,.23) 37%,transparent 75%)}
 .card-portfolio .card-scrim{background:linear-gradient(90deg,rgba(86,46,66,.58),rgba(86,46,66,.22) 41%,transparent 75%)}
 .card-certification .card-scrim{background:linear-gradient(270deg,rgba(39,42,61,.62),rgba(39,42,61,.24) 36%,transparent 75%)}
 .card-all{z-index:1;cursor:pointer}
 .card-copy{position:relative;z-index:2;pointer-events:none;height:100%;padding:26px 4.2%;display:flex;flex-direction:column;align-items:flex-start;justify-content:center}
-.card-aws .card-copy,.card-certification .card-copy{align-items:flex-end;text-align:right}
+.card-network .card-copy,.card-aws .card-copy,.card-certification .card-copy{align-items:flex-end;text-align:right}
 .card-copy h2{font-size:clamp(34px,4vw,48px);font-weight:500;line-height:1.13;letter-spacing:-.035em;margin:0 0 10px;white-space:nowrap}
 .card-caption{font-size:15px;line-height:1.5;margin:0;font-weight:400;max-width:530px}
 .card-details{display:grid;grid-template-rows:0fr;visibility:hidden;opacity:0;transform:translateY(6px);transition:grid-template-rows .32s,opacity .18s,transform .18s,visibility 0s linear .25s;pointer-events:none;max-width:min(650px,100%)}
@@ -68,7 +69,7 @@ a{color:inherit;text-decoration:none}button,input{font:inherit}button{cursor:poi
 .category-card.active .card-details{grid-template-rows:1fr;opacity:1;visibility:visible;transform:none;transition:grid-template-rows .32s,opacity .18s ease .26s,transform .18s ease .26s,visibility 0s linear 0s;pointer-events:auto}
 .card-description{font-size:14px;line-height:1.65;margin:18px 0 13px;max-width:490px}
 .topic-links{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-start}
-.card-aws .topic-links,.card-certification .topic-links{justify-content:flex-end}
+.card-network .topic-links,.card-aws .topic-links,.card-certification .topic-links{justify-content:flex-end}
 .topic-link{position:relative;z-index:5;display:inline-flex;align-items:center;gap:8px;padding:8px 11px;font-size:11px;line-height:1.3;border:1px solid rgba(255,255,255,.85);background:rgba(0,0,0,.17);white-space:nowrap;pointer-events:auto}
 .topic-link:hover{background:rgba(0,0,0,.35)}
 .go-pill{margin-top:15px;padding-bottom:4px;border-bottom:1px solid currentColor;font-size:12px;display:inline-flex;gap:7px;opacity:.93}
@@ -93,10 +94,10 @@ a{color:inherit;text-decoration:none}button,input{font:inherit}button{cursor:poi
  .editorial-hero{display:block;min-height:0;padding:33px 0 35px}.hero-watermark{font-size:clamp(78px,21vw,124px)}.editorial-copy{padding:0;margin-top:-19px}.editorial-head{font-size:21px}.editorial-sub{font-size:12px}
  .category-heading{padding-bottom:14px}
  .category-card{height:172px}.category-card.active{height:355px}
- .card-copy{padding:18px 5%}.card-aws .card-copy,.card-certification .card-copy{align-items:flex-start;text-align:left}
+ .card-copy{padding:18px 5%}.card-network .card-copy,.card-aws .card-copy,.card-certification .card-copy{align-items:flex-start;text-align:left}
  .card-copy h2{font-size:clamp(23px,6.5vw,28px);white-space:normal;overflow-wrap:anywhere}.card-certification .card-copy h2{font-size:clamp(20px,5.6vw,25px)}
  .card-caption{font-size:11px;max-width:78%}.card-description{font-size:12px;margin:12px 0 12px;max-width:86%;line-height:1.5}
- .card-aws .topic-links,.card-certification .topic-links{justify-content:flex-start}.topic-link{font-size:10px;padding:6px 8px;white-space:normal}
+ .card-network .topic-links,.card-aws .topic-links,.card-certification .topic-links{justify-content:flex-start}.topic-link{font-size:10px;padding:6px 8px;white-space:normal}
  .card-scrim{background:linear-gradient(90deg,#0b0b0bba,transparent 100%)!important}.card-aws .card-scrim{background:linear-gradient(90deg,#1c344abd,transparent 100%)!important}.card-certification .card-scrim{background:linear-gradient(90deg,#30354ac0,transparent 100%)!important}.card-portfolio .card-scrim{background:linear-gradient(90deg,#654050ad,transparent 100%)!important}
  .go-pill{margin-top:11px;font-size:11px}
  .mobile-detail{position:absolute;bottom:12px;right:12px;z-index:7;border:1px solid #ffffff80;background:#0000004a;color:#fff;display:grid;place-items:center;width:35px;height:35px;font-size:21px}
@@ -112,7 +113,7 @@ a{color:inherit;text-decoration:none}button,input{font:inherit}button{cursor:poi
 <div class="search-panel"><label for="site-search">SEARCH</label><input id="site-search" placeholder="게시글 제목 또는 주제 검색" type="search"><p>게시글 제목과 주제로 검색합니다.</p><div class="search-results" id="search-results" role="status" aria-live="polite"></div></div></header>
 <main class="site-container main" id="top"><section class="editorial-hero" aria-label="블로그 소개"><div class="hero-watermark" aria-hidden="true">Notes.</div><div class="editorial-copy"><p class="editorial-meta">PERSONAL TECH ARCHIVE</p><h1 class="editorial-head">흩어진 기록을 모아, 연결된 이해로.</h1><p class="editorial-sub">Byte by byte, building security.</p></div></section>
 <div class="category-heading"><h2>CATEGORIES</h2></div><div class="accordion" aria-label="가로형 카테고리 슬라이더"><article class="category-card card-network" data-key="network" style="--panel-bg:var(--bg-network)">
-  <picture class="card-art"><source media="(max-width: 860px)" srcset="/assets/img/banners/v2/network-mobile.webp"><img class="card-visual" src="/assets/img/banners/v2/network-1x.webp" srcset="/assets/img/banners/v2/network-2x.webp 2x" width="1200" height="450" alt="" draggable="false" decoding="async"></picture>
+  <picture class="card-art"><source media="(max-width: 860px)" srcset="/assets/img/banners/v2/network-mobile.webp"><img class="card-visual" src="/assets/img/banners/v2/network-left-1x.webp" srcset="/assets/img/banners/v2/network-left-2x.webp 2x" width="1200" height="450" alt="" draggable="false" decoding="async"></picture>
   <span class="card-scrim" aria-hidden="true"></span>
   <a class="card-all" href="/topics/network/" aria-label="NETWORK 전체 글 보기"></a>
   <div class="card-copy"><h2>NETWORK</h2><p class="card-caption">OSI 7 Layer · TCP/IP · Protocol</p>
@@ -121,6 +122,16 @@ a{color:inherit;text-decoration:none}button,input{font:inherit}button{cursor:poi
 <a class="topic-link" href="/topics/network/?topic=Protocol">Protocol<span aria-hidden="true">↗</span></a></nav></div></div>
    <span class="go-pill" aria-hidden="true">go <span>↗</span></span>
   </div><button class="mobile-detail" aria-label="NETWORK 세부 내용 펼치기" aria-expanded="false" type="button">+</button>
+ </article><article class="category-card card-security" data-key="security" style="--panel-bg:var(--bg-security)">
+  <picture class="card-art"><source media="(max-width: 860px)" srcset="/assets/img/banners/v2/security-mobile.webp"><img class="card-visual" src="/assets/img/banners/v2/security-1x.webp" srcset="/assets/img/banners/v2/security-2x.webp 2x" width="1200" height="450" alt="" draggable="false" decoding="async"></picture>
+  <span class="card-scrim" aria-hidden="true"></span>
+  <a class="card-all" href="/topics/security/" aria-label="SECURITY 전체 글 보기"></a>
+  <div class="card-copy"><h2>SECURITY</h2><p class="card-caption">Security Operations · Detection · Malware Analysis</p>
+   <div class="card-details"><div class="card-details-body"><p class="card-description">보안관제와 탐지·대응, 악성코드 분석에 관한 기술과 실습을 정리합니다.</p><nav class="topic-links" aria-label="SECURITY 대표 주제"><a class="topic-link" href="/topics/security/?topic=Security%20Operations">Security Operations<span aria-hidden="true">↗</span></a>
+<a class="topic-link" href="/topics/security/?topic=Malware%20Analysis">Malware Analysis<span aria-hidden="true">↗</span></a>
+<a class="topic-link" href="/topics/security/?topic=Security%20Basics">Security Basics<span aria-hidden="true">↗</span></a></nav></div></div>
+   <span class="go-pill" aria-hidden="true">go <span>↗</span></span>
+  </div><button class="mobile-detail" aria-label="SECURITY 세부 내용 펼치기" aria-expanded="false" type="button">+</button>
  </article><article class="category-card card-aws" data-key="aws" style="--panel-bg:var(--bg-aws)">
   <picture class="card-art"><source media="(max-width: 860px)" srcset="/assets/img/banners/v2/aws-mobile.webp"><img class="card-visual" src="/assets/img/banners/v2/aws-1x.webp" srcset="/assets/img/banners/v2/aws-2x.webp 2x" width="1200" height="450" alt="" draggable="false" decoding="async"></picture>
   <span class="card-scrim" aria-hidden="true"></span>
