@@ -1,251 +1,176 @@
----
-layout: null
-permalink: /
----
-<!doctype html><html lang="ko"><head>
+<!doctype html>
+<html lang="ko"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light">
+<meta name="bsc-build" content="2026-11-18-static-unified-01">
 <title>ByteSumCookies | Field Notes</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@1,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@1,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2"><link rel="shortcut icon" href="/favicon.ico?v=2" sizes="any"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=2"><link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
 <style>
-:root{--ink:#151515;--text:#565656;--muted:#868686;--line:#e9e9e9;--content:1240px;--bg-network:#050505;--bg-aws:#C8D8EB;--bg-portfolio:#E8D3DC;--bg-certification:#D9D9E1}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#fff;color:var(--ink);font-family:Inter,"Pretendard","Apple SD Gothic Neo","Noto Sans KR",-apple-system,BlinkMacSystemFont,Arial,sans-serif;-webkit-font-smoothing:antialiased}a{text-decoration:none;color:inherit}button,input{font:inherit}button{cursor:pointer}a:focus-visible,button:focus-visible{outline:2px solid #393939;outline-offset:3px}
-.site-container{width:100%;max-width:var(--content);margin:0 auto;padding:0 24px}
-.site-header{height:110px;border-bottom:1px solid var(--line);background:#fff;position:relative;z-index:30}
-.site-header .inner{height:100%;display:flex;align-items:center;gap:30px}
-.brand{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;flex:none;line-height:1}
-.brand-main{font-weight:800;font-size:30px;letter-spacing:-.064em;white-space:nowrap}
-.brand-main em{font-family:'Bodoni Moda',Georgia,serif;letter-spacing:-.08em;font-size:1.04em;font-weight:600;margin-left:-.025em;margin-right:-.055em}
-.brand-tag{font-size:8px;font-weight:750;letter-spacing:.52em;margin-top:7px;margin-left:2px}
-.primary-nav{margin-left:auto;display:flex;align-items:center;gap:clamp(16px,2vw,30px);white-space:nowrap;height:100%}
-.primary-nav button{border:0;background:transparent;padding:18px 0;font-size:11px;font-weight:750;letter-spacing:.055em;color:#303030;position:relative;height:auto}
-.primary-nav button:after{content:"";position:absolute;left:0;bottom:10px;width:100%;height:1px;background:#151515;transform:scaleX(0);transition:transform .22s;transform-origin:left}
-.primary-nav button.is-underlined:after{transform:scaleX(1)}
-.header-actions{display:flex;align-items:center;gap:4px;margin-left:30px}
-.icon-button{display:grid;place-items:center;padding:0;border:0;background:none;width:40px;height:42px;color:#161616;transition:opacity .18s}.icon-button:hover{opacity:.55}.icon-button svg{display:block}
+:root{--ink:#151515;--muted:#858585;--line:#e8e8e8;--content:1240px;--side:24px;--logo-column:264px;--header-gap:16px;--header-tool:42px;--bg-network:#050505;--bg-aws:#c8d8eb;--bg-portfolio:#e8d3dc;--bg-certification:#d9d9e1}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:var(--ink);font-family:Inter,"Pretendard","Apple SD Gothic Neo","Noto Sans KR",-apple-system,BlinkMacSystemFont,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}button,input{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-visible{outline:2px solid #151515;outline-offset:3px}
+.site-container{width:100%;max-width:var(--content);margin-inline:auto;padding-inline:var(--side)}
+.site-header{height:110px;border-bottom:1px solid var(--line);background:#fff;position:relative;z-index:40}
+.site-header .inner{height:100%;display:grid;grid-template-columns:var(--logo-column) minmax(0,1fr) var(--header-tool);column-gap:var(--header-gap);align-items:center}
+.brand{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;line-height:1;white-space:nowrap}
+.brand-main{font-size:29px;font-weight:800;letter-spacing:-.064em}.brand-main em{font-family:"Bodoni Moda",Georgia,serif;font-size:1.04em;font-weight:600;letter-spacing:-.08em;margin-left:-.025em;margin-right:-.055em}
+.brand-tag{font-size:8px;font-weight:700;letter-spacing:.52em;margin:7px 0 0 2px}
+.primary-nav,.menu-columns{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0}
+.primary-nav{height:100%;align-items:center}
+.primary-nav button{position:relative;justify-self:start;min-width:0;max-width:100%;padding:16px 0;border:0;background:none;font-size:11px;letter-spacing:.055em;font-weight:750;white-space:nowrap;color:#303030}
+.primary-nav button::after{content:"";position:absolute;bottom:8px;left:0;right:0;border-bottom:1px solid #151515;transform:scaleX(0);transform-origin:left;transition:transform .18s}
+.primary-nav button.is-underlined::after{transform:scaleX(1)}
+.header-actions{display:flex;gap:0;justify-content:end;align-items:center}
+.icon-button{display:grid;place-items:center;border:0;background:transparent;width:42px;height:42px;color:#161616;padding:0}.icon-button:hover{opacity:.6}.icon-button svg{display:block}
 .mobile-menu-toggle{display:none}
-.mega-menu{position:absolute;top:110px;left:0;right:0;z-index:50;background:#fff;border-bottom:1px solid #ddd;box-shadow:0 18px 32px #0000000a;opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-8px);transition:opacity .2s,transform .2s,visibility .2s}
+.mega-menu{position:absolute;inset-inline:0;top:110px;z-index:45;background:#fff;border-bottom:1px solid #ddd;box-shadow:0 18px 32px #0000000a;opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-6px);transition:opacity .18s,transform .18s,visibility .18s}
 .site-header.menu-open .mega-menu{opacity:1;visibility:visible;pointer-events:auto;transform:none}
-.mega-menu-inner{padding-top:29px;padding-bottom:37px}.menu-columns{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px}
-.menu-column{border-left:1px solid #eee;padding-left:18px;min-width:0}.menu-column:first-child{border:0;padding-left:0}
-.menu-column-title{display:flex;align-items:center;justify-content:space-between;font-size:12px;font-weight:800;letter-spacing:.04em;margin-bottom:19px;border:0;background:transparent;padding:0;cursor:pointer}
-.toggle-indicator{display:none}.subitems{display:flex;flex-direction:column;gap:13px}.subitems a{font-size:12px;color:#696969;line-height:1.5}.subitems a:hover{color:#151515;text-decoration:underline;text-underline-offset:4px}
-.search-panel{position:absolute;top:97px;right:max(20px,calc((100vw - 1240px)/2 + 24px));z-index:60;width:min(390px,calc(100vw - 38px));background:#fff;padding:20px;border:1px solid #dedede;box-shadow:0 15px 30px #0000000e;display:none}.site-header.search-open .search-panel{display:block}.search-panel label{display:block;font-size:11px;font-weight:750;letter-spacing:.12em;margin-bottom:11px}.search-panel input{width:100%;border:1px solid #d7d7d7;padding:11px 12px;outline:none;font-size:13px}.search-panel input:focus{border-color:#333}.search-panel p{font-size:12px;color:#888;margin:11px 0 0}
-.main{padding-top:0;padding-bottom:80px}
-.preview-switcher{position:relative;z-index:1;background:#fff;padding:0;display:flex;gap:7px;align-items:center}
-.preview-switcher strong{font-size:11px;font-weight:750;padding:0 10px;white-space:nowrap}.preview-switcher button{border:1px solid #ddd;padding:10px 12px;background:#fff;font-size:11px;font-weight:700;white-space:nowrap}.preview-switcher button[aria-pressed="true"]{background:#151515;color:white;border-color:#151515}
-.preview-caption{font-size:11px;color:#9c9c9c;letter-spacing:.035em;margin-top:16px}.category-heading{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-bottom:19px}
-.category-heading h2{font-size:12px;letter-spacing:.16em;font-weight:800;margin:0}.category-heading span{font-size:11px;color:#8b8b8b;letter-spacing:.02em}
-/* Editorial hero: reference-style large faint word + modest descriptive text. */
-.editorial-hero{padding:53px 0 48px;display:grid;grid-template-columns:52% 48%;align-items:center;position:relative;min-height:232px}
-.hero-watermark{font-size:clamp(90px,12vw,170px);font-weight:740;color:#F3F3F3;letter-spacing:-.095em;line-height:1;user-select:none;white-space:nowrap;pointer-events:none}
-.editorial-copy{padding:10px 0 10px 8px;z-index:2}.editorial-meta{font-size:10px;letter-spacing:.15em;color:#8c8c8c;font-weight:650;margin:0 0 15px}.editorial-head{font-size:25px;line-height:1.55;font-weight:400;color:#505050;letter-spacing:-.045em;word-break:keep-all;margin:0}.editorial-sub{margin:14px 0 0;font-size:13px;color:#959595;letter-spacing:.01em}
-.mode-embedded .editorial-hero{display:none}
-/* Horizontal category slider: roomy collapsed + fully featured expansion */
-.accordion{display:flex;flex-direction:column;gap:0;position:relative;overflow:hidden;width:100%;background:white}
-.category-card,.intro-card{position:relative;overflow:hidden;min-height:0;height:190px;isolation:isolate;flex:0 0 auto;background:var(--panel-bg);transition:height .62s cubic-bezier(.21,1,.26,1);outline-offset:-3px}
-.category-card.active,.intro-card.active{height:418px}
-.category-card{color:#fff}.card-network{color:#fff}
-.category-card:nth-child(n+2){border-top:1px solid #ffffff50}
-
-.category-card.active 
-.card-scrim{position:absolute;z-index:-2;inset:0;pointer-events:none}
-
-
-
-
-.card-all{position:absolute;inset:0;z-index:1;cursor:pointer}.category-card:focus-within{outline:2px solid #555;outline-offset:-2px}.category-card.active .card-all{cursor:pointer}
-.card-copy{height:100%;width:100%;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:29px 5%;position:relative;z-index:2;pointer-events:none}
-.card-aws .card-copy,.card-certification .card-copy{align-items:flex-end;text-align:right}
-.card-index{font-size:10px;letter-spacing:.1em;font-weight:700;opacity:.5;display:none}
-.card-copy h2{font-size:clamp(33px,4vw,53px);letter-spacing:-.038em;line-height:1.08;font-weight:500;margin:0 0 10px;white-space:nowrap;transition:font-size .35s}
-.card-caption{font-size:15px;line-height:1.5;max-width:490px;margin:0;letter-spacing:0;font-weight:400}
-.card-extra{height:0;max-height:none;opacity:0;visibility:hidden;overflow:visible;transform:translateY(10px);transition:opacity .22s ease,transform .22s ease,visibility 0s linear .22s;max-width:630px;pointer-events:none}
-.category-card.active .card-extra{height:auto;opacity:1;visibility:visible;transform:none;transition:opacity .22s ease .38s,transform .22s ease .38s,visibility 0s linear .38s;pointer-events:auto}
-.card-description{font-size:14px;line-height:1.7;margin:19px 0 18px;max-width:470px}
-.topic-links{display:flex;flex-wrap:wrap;gap:7px;justify-content:flex-start;position:relative;z-index:4;pointer-events:auto}
-.card-aws .topic-links,.card-certification .topic-links{justify-content:flex-end}
-.topic-link{border:1px solid currentColor;opacity:.9;padding:8px 11px;font-size:11px;display:inline-flex;align-items:center;gap:9px;line-height:1.3;background:#00000020;pointer-events:auto;position:relative;z-index:5}.topic-link:hover{background:#00000042}.card-network .topic-link:hover{background:#ffffff20}
-.go-pill{font-size:12px;display:inline-flex;align-items:center;gap:10px;margin-top:18px;border-bottom:1px solid currentColor;padding-bottom:4px;opacity:.8}
-.mobile-detail{display:none}
-/* Optional intro as the FIRST accordion panel, for comparison. */
-.intro-card{display:none;background:#f6f6f6;color:#4b4b4b}
-.mode-embedded .intro-card{display:block}
-.intro-card::before{content:'FIELD NOTES';position:absolute;right:2%;top:50%;font-size:clamp(75px,13vw,190px);line-height:1;font-weight:760;color:#eeeeee;letter-spacing:-.09em;transform:translateY(-50%);white-space:nowrap;pointer-events:none;z-index:-1}
-.intro-inner{height:100%;padding:26px 5%;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2;max-width:760px}
-.intro-eyebrow{font-size:11px;letter-spacing:.13em;color:#959595;margin-bottom:16px;font-weight:700}.intro-inner h2{font-size:26px;font-weight:400;line-height:1.45;letter-spacing:-.04em;margin:0;color:#565656}.intro-inner>p{font-size:13px;letter-spacing:.01em;color:#929292;margin:14px 0 0}
-.intro-details{max-height:0;opacity:0;visibility:hidden;transform:translateY(10px);overflow:hidden;transition:max-height .4s,opacity .25s,visibility .2s,transform .3s;pointer-events:none}.intro-details p{font-size:14px;line-height:1.8;margin:20px 0 0;max-width:500px}.intro-card button{position:absolute;z-index:4;inset:0;border:0;background:none;width:100%;text-align:left;cursor:pointer}
-.intro-card button:focus-visible{outline:2px solid #222;outline-offset:-2px}
-.mode-editorial .intro-card{display:none}
-.demo-note{padding:28px 0 5px;font-size:12px;color:#909090;line-height:1.7}.demo-note strong{color:#555}.below{margin:45px 0 0;padding:24px 0;border-top:1px solid var(--line);font-size:12px;color:#888}
-/* Responsive */
-@media(max-width:1180px){.site-container{padding:0 35px}.primary-nav{gap:17px}.primary-nav button{font-size:10px}.header-actions{margin-left:12px}.card-copy{padding-left:5%;padding-right:5%}}
-@media(max-width:860px){.site-header{height:80px}.site-container{padding:0 21px}.site-header .inner{gap:8px}.brand-main{font-size:27px}.brand-tag{font-size:7px}.primary-nav{display:none}.mobile-menu-toggle{display:grid}.header-actions{margin-left:auto}.mega-menu{top:80px}.mega-menu-inner{padding-top:0;padding-bottom:16px;max-height:calc(100dvh - 80px);overflow-y:auto}.menu-columns{display:block}.menu-column{padding:0;border-left:0;border-bottom:1px solid #eee}.menu-column:first-child{padding:0}.menu-column-title{width:100%;margin:0;padding:16px 0;font-size:12px;text-align:left}.toggle-indicator{display:block;color:#888;font-weight:400;font-size:20px}.menu-column.mobile-expanded .toggle-indicator{transform:rotate(45deg)}.subitems{display:none;padding:0 0 18px 8px;gap:13px}.menu-column.mobile-expanded .subitems{display:flex}.search-panel{top:70px;right:14px}.editorial-hero{min-height:205px;padding:32px 0 38px;grid-template-columns:1fr}.hero-watermark{font-size:clamp(72px,21vw,132px)}.editorial-copy{padding:0;margin-top:-22px}.editorial-head{font-size:21px}.category-heading{padding-bottom:16px}.category-heading span{display:none}.category-card,.intro-card{height:166px}.category-card.active,.intro-card.active{height:320px}.card-copy h2{font-size:29px}.card-caption{font-size:12px;max-width:70%;line-height:1.4}.card-copy{padding:20px 5%}.card-aws .card-copy,.card-certification .card-copy{align-items:flex-start;text-align:left}.card-aws .topic-links,.card-certification .topic-links{justify-content:flex-start}.card-description{font-size:12px;margin:13px 0 12px;max-width:72%;line-height:1.55}.topic-link{font-size:10px;padding:6px 8px}.card-extra{max-width:100%}.intro-inner h2{font-size:21px}.intro-card::before{font-size:58px;right:-10px}.mobile-detail{display:flex;align-items:center;justify-content:center;position:absolute;bottom:12px;right:12px;z-index:8;width:36px;height:36px;border:1px solid #7776;background:#ffffff7a;color:inherit;font-size:22px;font-weight:300}.card-network .mobile-detail{background:#00000063;border-color:#fff6}.category-heading{flex-wrap:wrap;gap:12px}.preview-switcher{padding:0;gap:5px}.preview-switcher strong{display:none}.preview-switcher button{font-size:10px;padding:10px 9px}.demo-note{font-size:11px}}
-@media(max-width:390px){.brand-main{font-size:24px}.brand-tag{letter-spacing:.43em}.card-copy h2{font-size:24px}.card-description{max-width:86%}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
-
-#search-results{margin-top:12px;max-height:285px;overflow-y:auto}
-#search-results a{display:block;padding:10px 0;border-bottom:1px solid #eee;font-size:12px;line-height:1.4}
-#search-results a:hover{text-decoration:underline;text-underline-offset:3px}
-#search-results .empty{color:#888;font-size:12px;padding:7px 0}
-.recent-posts{border-top:1px solid var(--line);margin-top:46px;padding:30px 0 0}
-.recent-posts h2{margin:0 0 20px;font-size:12px;letter-spacing:.16em;font-weight:750}
-.recent-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-.recent-post{border:1px solid #e5e5e5;padding:20px;display:flex;flex-direction:column;gap:12px;min-height:148px}
-.recent-post:hover{border-color:#aaa}
-.recent-post span,.recent-post small,.recent-empty{font-size:11px;color:#888}
-.recent-post strong{font-size:15px;line-height:1.45;letter-spacing:-.02em}
-@media(max-width:860px){.recent-grid{grid-template-columns:1fr}.recent-post{min-height:0}}
-
-
-/* Canonical Tistory-reference banner sizing. One source of truth. */
-:root { --content:1240px; }
-.site-container{max-width:var(--content);padding-left:24px;padding-right:24px}
-.search-panel{right:max(20px,calc((100vw - 1240px)/2 + 24px))}
-.category-card{height:280px;transition:height .50s cubic-bezier(.22,1,.36,1);border:0!important;}
+.mega-menu-inner{display:grid;grid-template-columns:var(--logo-column) minmax(0,1fr) var(--header-tool);column-gap:var(--header-gap);padding-top:24px;padding-bottom:28px}
+.menu-columns{grid-column:2;align-items:start}
+.menu-column{padding:0;min-width:0}.menu-column-title{font-size:11px;letter-spacing:.055em;font-weight:750;color:#303030;background:transparent;border:0;padding:0;margin:0 0 17px;display:block;text-align:left;white-space:nowrap}
+.mobile-plus{display:none}.subitems{display:flex;flex-direction:column;gap:12px;padding-right:12px}
+.subitems a{font-size:12px;color:#686868;line-height:1.45;overflow-wrap:anywhere}.subitems a:hover{color:#111;text-decoration:underline;text-underline-offset:3px}
+.search-panel{position:absolute;top:94px;right:max(var(--side),calc((100vw - var(--content))/2 + var(--side)));z-index:70;width:min(390px,calc(100vw - 32px));padding:20px;border:1px solid #dedede;background:#fff;box-shadow:0 16px 30px #00000010;display:none}
+.site-header.search-open .search-panel{display:block}.search-panel label{display:block;font-size:11px;letter-spacing:.11em;font-weight:750;margin-bottom:10px}.search-panel input{display:block;width:100%;font-size:13px;padding:12px;border:1px solid #ddd;outline:none}.search-panel input:focus{border-color:#555}.search-panel p{font-size:11px;color:#888;line-height:1.5}.search-results a{display:block;border-top:1px solid #eee;font-size:12px;padding:10px 0}
+.main{padding-top:0;padding-bottom:68px}
+.editorial-hero{padding:50px 0 48px;min-height:232px;display:grid;grid-template-columns:52% 48%;align-items:center}
+.hero-watermark{font-size:clamp(90px,11vw,158px);line-height:1;font-weight:740;color:#f2f2f2;letter-spacing:-.095em;white-space:nowrap;user-select:none}
+.editorial-copy{padding-left:8px;z-index:1}.editorial-meta{margin:0 0 15px;font-size:10px;letter-spacing:.15em;font-weight:650;color:#858585}.editorial-head{margin:0;font-size:25px;font-weight:400;line-height:1.5;color:#505050;letter-spacing:-.045em;word-break:keep-all}.editorial-sub{margin:13px 0 0;font-size:13px;color:#949494}
+.category-heading{padding:0 0 19px}.category-heading h2{font-size:12px;letter-spacing:.16em;font-weight:800;margin:0}
+/* CATEGORY CARDS: one sizing rule; the image never scales during animation. */
+.accordion{display:flex;flex-direction:column;gap:0;width:100%;overflow:hidden}
+.category-card{position:relative;flex:none;isolation:isolate;overflow:hidden;height:280px;color:#fff;background:var(--panel-bg);transition:height .52s cubic-bezier(.22,1,.36,1)}
 .category-card.active{height:450px}
-.category-card .card-visual,.card-network .card-visual,.card-aws .card-visual,.card-portfolio .card-visual,.card-certification .card-visual{
-position:absolute;inset:0;top:0;right:0;bottom:0;left:0;width:100%;height:100%;max-width:none;
-object-fit:cover;object-position:center center;mask-image:none;-webkit-mask-image:none;transform:none!important;transition:none;
-}
-.category-card .card-scrim{background:none}
-.card-network .card-scrim{background:none}
-.card-aws .card-scrim,.card-certification .card-scrim{background:linear-gradient(90deg,transparent 45%,rgba(34,47,65,.17) 59%,rgba(37,48,64,.69) 100%)}
-.card-portfolio .card-scrim{background:linear-gradient(90deg,rgba(100,56,71,.63),rgba(100,56,71,.23) 38%,transparent 67%)}
-.card-copy{padding:28px 4.2%}
-.card-copy h2{font-size:clamp(38px,3.85vw,49px);font-weight:500;letter-spacing:-.025em;line-height:1.1;margin-bottom:12px}
-.card-caption{font-size:15px;line-height:1.55}
-.card-description{font-size:14px;line-height:1.7;margin:17px 0 16px}
-.card-aws .card-copy,.card-certification .card-copy{padding-right:4.2%;}
-.go-pill{border:0;margin-top:26px;width:42px;height:42px;border-radius:50%;background:#050505;color:white;display:inline-flex;align-items:center;justify-content:center;font-size:14px;font-weight:400;padding:0;opacity:1}
-.go-pill{flex:0 0 42px;line-height:1;box-sizing:border-box}.go-pill span{display:none}.card-aws .card-caption{max-width:600px}
-.card-network .go-pill{background:transparent}
-.card-extra{display:none;opacity:0;visibility:hidden;overflow:visible;pointer-events:none;}
-.category-card.active .card-extra{display:block;visibility:visible;opacity:1;pointer-events:auto;animation:revealDetails .22s ease .2s both;}@keyframes revealDetails{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-.topic-links{gap:10px}
-.topic-link{border:1px solid currentColor;box-sizing:border-box;padding:9px 12px;background:#10101019;line-height:1.35;color:#fff;opacity:1;white-space:nowrap}
+.card-art,.card-scrim,.card-all{position:absolute;inset:0;display:block}
+.card-art{z-index:-3;pointer-events:none}.card-visual{display:block;width:100%;height:100%;object-fit:cover;object-position:center;pointer-events:none;transform:none!important;max-width:none}
+.card-scrim{z-index:-2;pointer-events:none}
+.card-network .card-scrim{background:linear-gradient(90deg,#000 0%,#0008 29%,transparent 60%)}
+.card-aws .card-scrim{background:linear-gradient(270deg,rgba(23,42,67,.54),rgba(23,42,67,.23) 37%,transparent 75%)}
+.card-portfolio .card-scrim{background:linear-gradient(90deg,rgba(86,46,66,.58),rgba(86,46,66,.22) 41%,transparent 75%)}
+.card-certification .card-scrim{background:linear-gradient(270deg,rgba(39,42,61,.62),rgba(39,42,61,.24) 36%,transparent 75%)}
+.card-all{z-index:1;cursor:pointer}
+.card-copy{position:relative;z-index:2;pointer-events:none;height:100%;padding:26px 4.2%;display:flex;flex-direction:column;align-items:flex-start;justify-content:center}
+.card-aws .card-copy,.card-certification .card-copy{align-items:flex-end;text-align:right}
+.card-copy h2{font-size:clamp(34px,4vw,48px);font-weight:500;line-height:1.13;letter-spacing:-.035em;margin:0 0 10px;white-space:nowrap}
+.card-caption{font-size:15px;line-height:1.5;margin:0;font-weight:400;max-width:530px}
+.card-details{display:grid;grid-template-rows:0fr;visibility:hidden;opacity:0;transform:translateY(6px);transition:grid-template-rows .32s,opacity .18s,transform .18s,visibility 0s linear .25s;pointer-events:none;max-width:min(650px,100%)}
+.card-details-body{min-height:0;overflow:hidden;padding:0 1px}
+.category-card.active .card-details{grid-template-rows:1fr;opacity:1;visibility:visible;transform:none;transition:grid-template-rows .32s,opacity .18s ease .26s,transform .18s ease .26s,visibility 0s linear 0s;pointer-events:auto}
+.card-description{font-size:14px;line-height:1.65;margin:18px 0 13px;max-width:490px}
+.topic-links{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-start}
+.card-aws .topic-links,.card-certification .topic-links{justify-content:flex-end}
+.topic-link{position:relative;z-index:5;display:inline-flex;align-items:center;gap:8px;padding:8px 11px;font-size:11px;line-height:1.3;border:1px solid rgba(255,255,255,.85);background:rgba(0,0,0,.17);white-space:nowrap;pointer-events:auto}
+.topic-link:hover{background:rgba(0,0,0,.35)}
+.go-pill{margin-top:15px;padding-bottom:4px;border-bottom:1px solid currentColor;font-size:12px;display:inline-flex;gap:7px;opacity:.93}
+.mobile-detail{display:none}
+.recent-posts{padding-top:29px;margin-top:45px;border-top:1px solid var(--line)}.recent-posts h2{font-size:12px;letter-spacing:.16em;font-weight:750;margin:0 0 20px}
+.recent-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.recent-post{display:flex;flex-direction:column;gap:10px;border:1px solid #e5e5e5;padding:20px;min-height:140px}.recent-post:hover{border-color:#aaa}.recent-post span,.recent-post small,.recent-empty{color:#888;font-size:11px}.recent-post strong{font-size:15px;line-height:1.45}
+.site-footer{font-size:11px;color:#aaa;padding:23px 0;border-top:1px solid #eee}
+@media(max-width:1170px){:root{--logo-column:243px;--header-gap:12px;--side:30px}.primary-nav button,.menu-column-title{font-size:10px}}
+@media(max-width:950px){:root{--logo-column:217px;--header-gap:8px;--side:22px}.brand-main{font-size:26px}.primary-nav button,.menu-column-title{font-size:9px}}
 @media(max-width:860px){
-.site-container{padding-left:17px;padding-right:17px}
-.category-card{height:172px}.category-card.active{height:355px}
-.card-copy{padding:20px 5%}
-.card-copy h2{font-size:clamp(22px,6.4vw,29px)}
-.card-caption{font-size:11px}
-.card-description{font-size:12px;margin:14px 0}
-.card-aws .card-copy,.card-certification .card-copy{align-items:flex-start;text-align:left}
-.card-aws .topic-links,.card-certification .topic-links{justify-content:flex-start}
-.card-aws .card-scrim,.card-certification .card-scrim{background:linear-gradient(90deg,rgba(26,37,52,.77),rgba(26,37,52,.45) 50%,transparent 100%)}
-.card-portfolio .card-scrim{background:linear-gradient(90deg,rgba(100,56,71,.76),rgba(100,56,71,.35) 65%,transparent)}
-.go-pill{width:30px;height:30px;flex-basis:30px;margin-top:12px;font-size:12px}
+ :root{--side:18px}
+ .site-header{height:78px}.site-header .inner{display:flex;gap:8px}.brand-main{font-size:26px}.brand-tag{font-size:7px;letter-spacing:.45em}
+ .primary-nav{display:none}.header-actions{margin-left:auto}.mobile-menu-toggle{display:grid}
+ .mega-menu{top:78px}.mega-menu-inner{display:block;padding-top:0;padding-bottom:15px;max-height:calc(100dvh - 78px);overflow-y:auto}.menu-columns{display:block}
+ .menu-column{border-bottom:1px solid #eee}.menu-column-title{font-size:12px;width:100%;padding:16px 0;margin:0;display:flex;justify-content:space-between;align-items:center}
+ .mobile-plus{display:block;font-size:20px;color:#8c8c8c;font-weight:300}.menu-column.mobile-expanded .mobile-plus{transform:rotate(45deg)}
+ .subitems{display:none;padding:0 0 17px 8px}.menu-column.mobile-expanded .subitems{display:flex}
+ .search-panel{top:72px;right:16px}
+ .editorial-hero{display:block;min-height:0;padding:33px 0 35px}.hero-watermark{font-size:clamp(78px,21vw,124px)}.editorial-copy{padding:0;margin-top:-19px}.editorial-head{font-size:21px}.editorial-sub{font-size:12px}
+ .category-heading{padding-bottom:14px}
+ .category-card{height:172px}.category-card.active{height:355px}
+ .card-copy{padding:18px 5%}.card-aws .card-copy,.card-certification .card-copy{align-items:flex-start;text-align:left}
+ .card-copy h2{font-size:clamp(23px,6.5vw,28px);white-space:normal;overflow-wrap:anywhere}.card-certification .card-copy h2{font-size:clamp(20px,5.6vw,25px)}
+ .card-caption{font-size:11px;max-width:78%}.card-description{font-size:12px;margin:12px 0 12px;max-width:86%;line-height:1.5}
+ .card-aws .topic-links,.card-certification .topic-links{justify-content:flex-start}.topic-link{font-size:10px;padding:6px 8px;white-space:normal}
+ .card-scrim{background:linear-gradient(90deg,#0b0b0bba,transparent 100%)!important}.card-aws .card-scrim{background:linear-gradient(90deg,#1c344abd,transparent 100%)!important}.card-certification .card-scrim{background:linear-gradient(90deg,#30354ac0,transparent 100%)!important}.card-portfolio .card-scrim{background:linear-gradient(90deg,#654050ad,transparent 100%)!important}
+ .go-pill{margin-top:11px;font-size:11px}
+ .mobile-detail{position:absolute;bottom:12px;right:12px;z-index:7;border:1px solid #ffffff80;background:#0000004a;color:#fff;display:grid;place-items:center;width:35px;height:35px;font-size:21px}
+ .recent-grid{grid-template-columns:1fr}.recent-post{min-height:auto}
 }
-.card-art{position:absolute;inset:0;z-index:-3;display:block;pointer-events:none}.card-art .card-visual{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;max-width:none}
+@media(max-width:390px){.brand-main{font-size:23px}.brand-tag{letter-spacing:.4em}.card-caption{max-width:80%}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
 </style></head><body>
-<header class="site-header"><div class="site-container inner">
-<a class="brand" href="/" aria-label="ByteSumCookies 홈"><span class="brand-main">Byte<em>Sum</em>Cookies</span><span class="brand-tag">FIELD NOTES</span></a>
+<header class="site-header"><div class="site-container inner"><a class="brand" href="/" aria-label="ByteSumCookies 홈"><span class="brand-main">Byte<em>Sum</em>Cookies</span><span class="brand-tag">FIELD NOTES</span></a>
 <nav class="primary-nav" aria-label="상위 카테고리"><button type="button" data-target="network" aria-expanded="false">NETWORK</button><button type="button" data-target="security" aria-expanded="false">SECURITY</button><button type="button" data-target="aws" aria-expanded="false">AWS</button><button type="button" data-target="portfolio" aria-expanded="false">PORTFOLIO</button><button type="button" data-target="certification" aria-expanded="false">CERTIFICATION</button></nav>
 <div class="header-actions"><button class="icon-button" id="search-trigger" aria-expanded="false" aria-label="검색 열기" type="button"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round"><circle cx="10.7" cy="10.7" r="6.6"></circle><path d="M15.5 15.5L21 21"></path></svg></button><button class="icon-button mobile-menu-toggle" id="mobile-menu-toggle" aria-label="카테고리 메뉴 열기" aria-expanded="false" type="button"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.45" stroke-linecap="round"><path d="M3 8h18M3 16h18"></path></svg></button></div>
-</div><div class="mega-menu" aria-label="카테고리 세부 메뉴"><div class="site-container mega-menu-inner"><div class="menu-columns"><div class="menu-column" data-menu="network"><button class="menu-column-title" type="button" aria-expanded="false">NETWORK<span class="toggle-indicator" aria-hidden="true">+</span></button><div class="subitems"><a href="/topics/network/">전체 글 보기</a></div></div>
-<div class="menu-column" data-menu="security"><button class="menu-column-title" type="button" aria-expanded="false">SECURITY<span class="toggle-indicator" aria-hidden="true">+</span></button><div class="subitems"><a href="/topics/security/?topic=Security%20Basics">Security Basics</a><a href="/topics/security/?topic=Malware%20Analysis">Malware Analysis</a><a href="/topics/security/?topic=Security%20Operations">Security Operations</a></div></div>
-<div class="menu-column" data-menu="aws"><button class="menu-column-title" type="button" aria-expanded="false">AWS<span class="toggle-indicator" aria-hidden="true">+</span></button><div class="subitems"><a href="/topics/aws/?topic=Fundamentals%20%26%20Governance">Fundamentals &amp; Governance</a><a href="/topics/aws/?topic=Compute%20%26%20Network">Compute &amp; Network</a><a href="/topics/aws/?topic=Storage%20%26%20Data">Storage &amp; Data</a><a href="/topics/aws/?topic=Security%20%26%20Architecture">Security &amp; Architecture</a></div></div>
-<div class="menu-column" data-menu="portfolio"><button class="menu-column-title" type="button" aria-expanded="false">PORTFOLIO<span class="toggle-indicator" aria-hidden="true">+</span></button><div class="subitems"><a href="/topics/portfolio/">전체 글 보기</a></div></div>
-<div class="menu-column" data-menu="certification"><button class="menu-column-title" type="button" aria-expanded="false">CERTIFICATION<span class="toggle-indicator" aria-hidden="true">+</span></button><div class="subitems"><a href="/topics/certification/">전체 글 보기</a></div></div></div></div></div>
-<div class="search-panel"><label for="preview-search">SEARCH</label><input id="preview-search" placeholder="게시글 제목 또는 주제 검색" type="search"><p>검색어와 일치하는 게시글을 표시합니다.</p><div id="search-results" role="status" aria-live="polite"></div></div>
-</header>
-<main class="site-container main" id="top">
-<section class="editorial-hero" aria-label="블로그 소개"><div class="hero-watermark" aria-hidden="true">Notes.</div><div class="editorial-copy"><p class="editorial-meta">PERSONAL TECH ARCHIVE</p><h1 class="editorial-head">흩어진 기록을 모아, 연결된 이해로.</h1><p class="editorial-sub">Byte by byte, building security.</p></div></section>
-<div class="category-heading"><h2>CATEGORIES</h2></div>
-<div class="accordion" role="region" aria-label="가로형 아코디언 배너">
-
-<article class="category-card card-network" data-key="network" style="--panel-bg:var(--bg-network);--img-pos:right">
-  <picture class="card-art"><source media="(max-width: 860px)" srcset="/assets/img/banners/v2/network-mobile.webp"><img class="card-visual" src="/assets/img/banners/v2/network-1x.webp" srcset="/assets/img/banners/v2/network-2x.webp 2x" alt="" draggable="false" decoding="async" /></picture>
+</div><div class="mega-menu" aria-label="카테고리 세부 메뉴"><div class="site-container mega-menu-inner"><div class="menu-columns"><section class="menu-column" data-menu="network"><button class="menu-column-title" type="button" aria-expanded="false">NETWORK<span class="mobile-plus" aria-hidden="true">+</span></button><div class="subitems"><a href="/topics/network/">전체 글 보기</a></div></section><section class="menu-column" data-menu="security"><button class="menu-column-title" type="button" aria-expanded="false">SECURITY<span class="mobile-plus" aria-hidden="true">+</span></button><div class="subitems"><a href="/topics/security/?topic=Security%20Basics">Security Basics</a><a href="/topics/security/?topic=Malware%20Analysis">Malware Analysis</a><a href="/topics/security/?topic=Security%20Operations">Security Operations</a></div></section><section class="menu-column" data-menu="aws"><button class="menu-column-title" type="button" aria-expanded="false">AWS<span class="mobile-plus" aria-hidden="true">+</span></button><div class="subitems"><a href="/topics/aws/?topic=Fundamentals%20%26%20Governance">Fundamentals & Governance</a><a href="/topics/aws/?topic=Compute%20%26%20Network">Compute & Network</a><a href="/topics/aws/?topic=Storage%20%26%20Data">Storage & Data</a><a href="/topics/aws/?topic=Security%20%26%20Architecture">Security & Architecture</a></div></section><section class="menu-column" data-menu="portfolio"><button class="menu-column-title" type="button" aria-expanded="false">PORTFOLIO<span class="mobile-plus" aria-hidden="true">+</span></button><div class="subitems"><a href="/topics/portfolio/">전체 글 보기</a></div></section><section class="menu-column" data-menu="certification"><button class="menu-column-title" type="button" aria-expanded="false">CERTIFICATION<span class="mobile-plus" aria-hidden="true">+</span></button><div class="subitems"><a href="/topics/certification/">전체 글 보기</a></div></section></div></div></div>
+<div class="search-panel"><label for="site-search">SEARCH</label><input id="site-search" placeholder="게시글 제목 또는 주제 검색" type="search"><p>게시글 제목과 주제로 검색합니다.</p><div class="search-results" id="search-results" role="status" aria-live="polite"></div></div></header>
+<main class="site-container main" id="top"><section class="editorial-hero" aria-label="블로그 소개"><div class="hero-watermark" aria-hidden="true">Notes.</div><div class="editorial-copy"><p class="editorial-meta">PERSONAL TECH ARCHIVE</p><h1 class="editorial-head">흩어진 기록을 모아, 연결된 이해로.</h1><p class="editorial-sub">Byte by byte, building security.</p></div></section>
+<div class="category-heading"><h2>CATEGORIES</h2></div><div class="accordion" aria-label="가로형 카테고리 슬라이더"><article class="category-card card-network" data-key="network" style="--panel-bg:var(--bg-network)">
+  <picture class="card-art"><source media="(max-width: 860px)" srcset="/assets/img/banners/v2/network-mobile.webp"><img class="card-visual" src="/assets/img/banners/v2/network-1x.webp" srcset="/assets/img/banners/v2/network-2x.webp 2x" width="1200" height="450" alt="" draggable="false" decoding="async"></picture>
   <span class="card-scrim" aria-hidden="true"></span>
-  <a class="card-all" href="/topics/network/" aria-label="NETWORK 카테고리 전체 보기"></a>
-  <div class="card-copy"><span class="card-index">01 / CATEGORIES</span><h2>NETWORK</h2><p class="card-caption">OSI 7 Layer · TCP/IP · Protocol</p>
-    <div class="card-extra"><p class="card-description">네트워크 구조, 프로토콜, 패킷 흐름을 관찰하며 정리합니다.</p><nav class="topic-links" aria-label="NETWORK 대표 주제"><a class="topic-link" href="/topics/network/?topic=OSI%207%20Layer">OSI 7 Layer<span aria-hidden="true">↗</span></a><a class="topic-link" href="/topics/network/?topic=TCP/IP">TCP/IP<span aria-hidden="true">↗</span></a><a class="topic-link" href="/topics/network/?topic=Protocol">Protocol<span aria-hidden="true">↗</span></a></nav></div>
-    <span class="go-pill" aria-hidden="true">go <span>↗</span></span>
-  </div>
-  <button class="mobile-detail" type="button" aria-label="NETWORK 세부 카테고리 펼치기" aria-expanded="false">+</button>
-  </article>
-<article class="category-card card-aws" data-key="aws" style="--panel-bg:var(--bg-aws);--img-pos:left">
-  <picture class="card-art"><source media="(max-width: 860px)" srcset="/assets/img/banners/v2/aws-mobile.webp"><img class="card-visual" src="/assets/img/banners/v2/aws-1x.webp" srcset="/assets/img/banners/v2/aws-2x.webp 2x" alt="" draggable="false" decoding="async" /></picture>
+  <a class="card-all" href="/topics/network/" aria-label="NETWORK 전체 글 보기"></a>
+  <div class="card-copy"><h2>NETWORK</h2><p class="card-caption">OSI 7 Layer · TCP/IP · Protocol</p>
+   <div class="card-details"><div class="card-details-body"><p class="card-description">네트워크 구조와 프로토콜, 패킷 흐름을 관찰하며 정리합니다.</p><nav class="topic-links" aria-label="NETWORK 대표 주제"><a class="topic-link" href="/topics/network/?topic=OSI%207%20Layer">OSI 7 Layer<span aria-hidden="true">↗</span></a>
+<a class="topic-link" href="/topics/network/?topic=TCP/IP">TCP/IP<span aria-hidden="true">↗</span></a>
+<a class="topic-link" href="/topics/network/?topic=Protocol">Protocol<span aria-hidden="true">↗</span></a></nav></div></div>
+   <span class="go-pill" aria-hidden="true">go <span>↗</span></span>
+  </div><button class="mobile-detail" aria-label="NETWORK 세부 내용 펼치기" aria-expanded="false" type="button">+</button>
+ </article><article class="category-card card-aws" data-key="aws" style="--panel-bg:var(--bg-aws)">
+  <picture class="card-art"><source media="(max-width: 860px)" srcset="/assets/img/banners/v2/aws-mobile.webp"><img class="card-visual" src="/assets/img/banners/v2/aws-1x.webp" srcset="/assets/img/banners/v2/aws-2x.webp 2x" width="1200" height="450" alt="" draggable="false" decoding="async"></picture>
   <span class="card-scrim" aria-hidden="true"></span>
-  <a class="card-all" href="/topics/aws/" aria-label="AWS 카테고리 전체 보기"></a>
-  <div class="card-copy"><span class="card-index">02 / CATEGORIES</span><h2>AWS</h2><p class="card-caption">Architecture · Governance · Identity · Networking · Storage · Database</p>
-    <div class="card-extra"><p class="card-description">AWS 서비스와 아키텍처를 학습하고 보안·운영 실습을 기록합니다.</p><nav class="topic-links" aria-label="AWS 대표 주제"><a class="topic-link" href="/topics/aws/?topic=Fundamentals%20%26%20Governance">Fundamentals &amp; Governance<span aria-hidden="true">↗</span></a><a class="topic-link" href="/topics/aws/?topic=Compute%20%26%20Network">Compute &amp; Network<span aria-hidden="true">↗</span></a><a class="topic-link" href="/topics/aws/?topic=Storage%20%26%20Data">Storage &amp; Data<span aria-hidden="true">↗</span></a><a class="topic-link" href="/topics/aws/?topic=Security%20%26%20Architecture">Security &amp; Architecture<span aria-hidden="true">↗</span></a></nav></div>
-    <span class="go-pill" aria-hidden="true">go <span>↗</span></span>
-  </div>
-  <button class="mobile-detail" type="button" aria-label="AWS 세부 카테고리 펼치기" aria-expanded="false">+</button>
-  </article>
-<article class="category-card card-portfolio" data-key="portfolio" style="--panel-bg:var(--bg-portfolio);--img-pos:right">
-  <picture class="card-art"><source media="(max-width: 860px)" srcset="/assets/img/banners/v2/portfolio-mobile.webp"><img class="card-visual" src="/assets/img/banners/v2/portfolio-1x.webp" srcset="/assets/img/banners/v2/portfolio-2x.webp 2x" alt="" draggable="false" decoding="async" /></picture>
+  <a class="card-all" href="/topics/aws/" aria-label="AWS 전체 글 보기"></a>
+  <div class="card-copy"><h2>AWS</h2><p class="card-caption">Architecture · Governance · Identity · Networking · Storage · Database</p>
+   <div class="card-details"><div class="card-details-body"><p class="card-description">AWS 서비스와 아키텍처를 학습하고 보안·운영 실습을 기록합니다.</p><nav class="topic-links" aria-label="AWS 대표 주제"><a class="topic-link" href="/topics/aws/?topic=Fundamentals%20%26%20Governance">Fundamentals & Governance<span aria-hidden="true">↗</span></a>
+<a class="topic-link" href="/topics/aws/?topic=Compute%20%26%20Network">Compute & Network<span aria-hidden="true">↗</span></a>
+<a class="topic-link" href="/topics/aws/?topic=Storage%20%26%20Data">Storage & Data<span aria-hidden="true">↗</span></a>
+<a class="topic-link" href="/topics/aws/?topic=Security%20%26%20Architecture">Security & Architecture<span aria-hidden="true">↗</span></a></nav></div></div>
+   <span class="go-pill" aria-hidden="true">go <span>↗</span></span>
+  </div><button class="mobile-detail" aria-label="AWS 세부 내용 펼치기" aria-expanded="false" type="button">+</button>
+ </article><article class="category-card card-portfolio" data-key="portfolio" style="--panel-bg:var(--bg-portfolio)">
+  <picture class="card-art"><source media="(max-width: 860px)" srcset="/assets/img/banners/v2/portfolio-mobile.webp"><img class="card-visual" src="/assets/img/banners/v2/portfolio-1x.webp" srcset="/assets/img/banners/v2/portfolio-2x.webp 2x" width="1200" height="450" alt="" draggable="false" decoding="async"></picture>
   <span class="card-scrim" aria-hidden="true"></span>
-  <a class="card-all" href="/topics/portfolio/" aria-label="PORTFOLIO 카테고리 전체 보기"></a>
-  <div class="card-copy"><span class="card-index">03 / CATEGORIES</span><h2>PORTFOLIO</h2><p class="card-caption">Projects · Labs · Build Records</p>
-    <div class="card-extra"><p class="card-description">직접 구축하고 실험한 프로젝트의 과정과 결과를 모았습니다.</p><nav class="topic-links" aria-label="PORTFOLIO 대표 주제"><a class="topic-link" href="/topics/portfolio/?topic=Projects">Projects<span aria-hidden="true">↗</span></a><a class="topic-link" href="/topics/portfolio/?topic=Labs">Labs<span aria-hidden="true">↗</span></a><a class="topic-link" href="/topics/portfolio/?topic=Build%20Records">Build Records<span aria-hidden="true">↗</span></a></nav></div>
-    <span class="go-pill" aria-hidden="true">go <span>↗</span></span>
-  </div>
-  <button class="mobile-detail" type="button" aria-label="PORTFOLIO 세부 카테고리 펼치기" aria-expanded="false">+</button>
-  </article>
-<article class="category-card card-certification" data-key="certification" style="--panel-bg:var(--bg-certification);--img-pos:right">
-  <picture class="card-art"><source media="(max-width: 860px)" srcset="/assets/img/banners/v2/certification-mobile.webp"><img class="card-visual" src="/assets/img/banners/v2/certification-1x.webp" srcset="/assets/img/banners/v2/certification-2x.webp 2x" alt="" draggable="false" decoding="async" /></picture>
+  <a class="card-all" href="/topics/portfolio/" aria-label="PORTFOLIO 전체 글 보기"></a>
+  <div class="card-copy"><h2>PORTFOLIO</h2><p class="card-caption">Projects · Labs · Build Records</p>
+   <div class="card-details"><div class="card-details-body"><p class="card-description">직접 구축하고 실험한 프로젝트의 과정과 결과를 모았습니다.</p><nav class="topic-links" aria-label="PORTFOLIO 대표 주제"><a class="topic-link" href="/topics/portfolio/?topic=Projects">Projects<span aria-hidden="true">↗</span></a>
+<a class="topic-link" href="/topics/portfolio/?topic=Labs">Labs<span aria-hidden="true">↗</span></a>
+<a class="topic-link" href="/topics/portfolio/?topic=Build%20Records">Build Records<span aria-hidden="true">↗</span></a></nav></div></div>
+   <span class="go-pill" aria-hidden="true">go <span>↗</span></span>
+  </div><button class="mobile-detail" aria-label="PORTFOLIO 세부 내용 펼치기" aria-expanded="false" type="button">+</button>
+ </article><article class="category-card card-certification" data-key="certification" style="--panel-bg:var(--bg-certification)">
+  <picture class="card-art"><source media="(max-width: 860px)" srcset="/assets/img/banners/v2/certification-mobile.webp"><img class="card-visual" src="/assets/img/banners/v2/certification-1x.webp" srcset="/assets/img/banners/v2/certification-2x.webp 2x" width="1200" height="450" alt="" draggable="false" decoding="async"></picture>
   <span class="card-scrim" aria-hidden="true"></span>
-  <a class="card-all" href="/topics/certification/" aria-label="CERTIFICATION 카테고리 전체 보기"></a>
-  <div class="card-copy"><span class="card-index">04 / CATEGORIES</span><h2>CERTIFICATION</h2><p class="card-caption">Cloud · IT · Security Certifications</p>
-    <div class="card-extra"><p class="card-description">자격증 학습 과정과 시험 후 되짚어 볼 핵심 지식을 정리합니다.</p><nav class="topic-links" aria-label="CERTIFICATION 대표 주제"><a class="topic-link" href="/topics/certification/?topic=Cloud">Cloud<span aria-hidden="true">↗</span></a><a class="topic-link" href="/topics/certification/?topic=IT">IT<span aria-hidden="true">↗</span></a><a class="topic-link" href="/topics/certification/?topic=Security">Security<span aria-hidden="true">↗</span></a></nav></div>
-    <span class="go-pill" aria-hidden="true">go <span>↗</span></span>
-  </div>
-  <button class="mobile-detail" type="button" aria-label="CERTIFICATION 세부 카테고리 펼치기" aria-expanded="false">+</button>
-  </article>
-</div>
-
-<section class="recent-posts" aria-label="최근 게시글">
-<h2>RECENT POSTS</h2>
-{% if site.posts.size > 0 %}
-<div class="recent-grid">{% for post in site.posts limit:6 %}
-<a class="recent-post" href="{{ post.url | relative_url }}">
-<span>{{ post.categories | first | default: 'FIELD NOTES' }}</span>
-<strong>{{ post.title | escape }}</strong>
-<small>{{ post.date | date: '%Y.%m.%d' }}</small>
-</a>{% endfor %}</div>
-{% else %}<p class="recent-empty">게시글 이전을 준비하고 있습니다.</p>{% endif %}
-</section></main>
-
+  <a class="card-all" href="/topics/certification/" aria-label="CERTIFICATION 전체 글 보기"></a>
+  <div class="card-copy"><h2>CERTIFICATION</h2><p class="card-caption">Cloud · IT · Security Certifications</p>
+   <div class="card-details"><div class="card-details-body"><p class="card-description">자격증 학습 과정과 시험 후 되짚어 볼 핵심 지식을 정리합니다.</p><nav class="topic-links" aria-label="CERTIFICATION 대표 주제"><a class="topic-link" href="/topics/certification/?topic=Cloud">Cloud<span aria-hidden="true">↗</span></a>
+<a class="topic-link" href="/topics/certification/?topic=IT">IT<span aria-hidden="true">↗</span></a>
+<a class="topic-link" href="/topics/certification/?topic=Security">Security<span aria-hidden="true">↗</span></a></nav></div></div>
+   <span class="go-pill" aria-hidden="true">go <span>↗</span></span>
+  </div><button class="mobile-detail" aria-label="CERTIFICATION 세부 내용 펼치기" aria-expanded="false" type="button">+</button>
+ </article></div>
+<section class="recent-posts" aria-label="최근 게시글"><h2>RECENT POSTS</h2><div class="recent-grid" id="recent-grid"><p class="recent-empty">게시글 이전을 준비하고 있습니다.</p></div></section></main>
+<footer class="site-container site-footer">© ByteSumCookies · Field Notes</footer>
 <script>
 (()=>{
 const header=document.querySelector('.site-header');
 const navButtons=[...document.querySelectorAll('.primary-nav button')];
-const menu=document.querySelector('.mega-menu');
-const search=document.querySelector('#search-trigger'), searchPanel=document.querySelector('.search-panel');
 const mobileToggle=document.querySelector('#mobile-menu-toggle');
-let selectedButton=null, hoveredButton=null;
-function drawUnderline(target){navButtons.forEach(b=>b.classList.toggle('is-underlined',b===target));}
-function closeMenu(){header.classList.remove('menu-open');selectedButton=null;hoveredButton=null;drawUnderline(null);navButtons.forEach(b=>b.setAttribute('aria-expanded','false')); mobileToggle.setAttribute('aria-expanded','false');}
-function closeSearch(){header.classList.remove('search-open');search.setAttribute('aria-expanded','false');}
-function openMenu(btn){closeSearch();const current=header.classList.contains('menu-open')&&selectedButton===btn;if(current){closeMenu();return;}header.classList.add('menu-open');selectedButton=btn;drawUnderline(btn);navButtons.forEach(b=>b.setAttribute('aria-expanded',String(b===btn)));mobileToggle.setAttribute('aria-expanded','true');}
-navButtons.forEach(btn=>{btn.addEventListener('click',()=>openMenu(btn));btn.addEventListener('mouseenter',()=>{hoveredButton=btn;drawUnderline(btn)});btn.addEventListener('mouseleave',()=>{hoveredButton=null;drawUnderline(header.classList.contains('menu-open')?selectedButton:null)});btn.addEventListener('focus',()=>drawUnderline(btn));btn.addEventListener('blur',()=>drawUnderline(header.classList.contains('menu-open')?selectedButton:null));});
-mobileToggle.addEventListener('click',()=>{if(header.classList.contains('menu-open'))closeMenu();else{closeSearch();header.classList.add('menu-open');mobileToggle.setAttribute('aria-expanded','true');}});
-document.querySelectorAll('.menu-column-title').forEach(btn=>btn.addEventListener('click',()=>{if(window.innerWidth>860)return;const col=btn.closest('.menu-column');const next=!col.classList.contains('mobile-expanded');document.querySelectorAll('.menu-column').forEach(c=>{c.classList.remove('mobile-expanded');c.querySelector('.menu-column-title').setAttribute('aria-expanded','false')});if(next){col.classList.add('mobile-expanded');btn.setAttribute('aria-expanded','true')}}));
-search.addEventListener('click',()=>{const should=!header.classList.contains('search-open');closeMenu();header.classList.toggle('search-open',should);search.setAttribute('aria-expanded',String(should));if(should)searchPanel.querySelector('input').focus();});
-const searchInput=searchPanel.querySelector('input'),searchResults=document.querySelector('#search-results');
-let searchPosts=null, requestSerial=0;
-async function searchSite(){
- const q=searchInput.value.trim().toLocaleLowerCase(),serial=++requestSerial;
- searchResults.replaceChildren();if(!q)return;
- const indicator=document.createElement('div');indicator.className='empty';indicator.textContent='검색 중...';searchResults.append(indicator);
- try{
-  if(!searchPosts){const response=await fetch('/search.json');if(!response.ok)throw new Error('Search index unavailable');const data=await response.json();searchPosts=data.posts||[];}
-  if(serial!==requestSerial)return;
-  const matched=searchPosts.filter(post=>[post.title,post.category,post.tags,post.excerpt].join(' ').toLocaleLowerCase().includes(q)).slice(0,12);
-  searchResults.replaceChildren();
-  if(!matched.length){const empty=document.createElement('div');empty.className='empty';empty.textContent='일치하는 게시글이 없습니다.';searchResults.append(empty);return;}
-  for(const item of matched){const link=document.createElement('a');link.href=item.url;link.textContent=item.title;searchResults.append(link);}
- }catch(error){if(serial===requestSerial){searchResults.replaceChildren();const notice=document.createElement('div');notice.className='empty';notice.textContent='검색 정보를 불러오지 못했습니다.';searchResults.append(notice);}}
-}
-searchInput.addEventListener('input',searchSite);
+const searchToggle=document.querySelector('#search-trigger');
+const searchInput=document.querySelector('#site-search');
+const searchResults=document.querySelector('#search-results');
+let selected=null;let hovered=null;
+function underline(btn){navButtons.forEach(b=>b.classList.toggle('is-underlined',b===btn));}
+function closeMenu(){header.classList.remove('menu-open');selected=null;hovered=null;underline(null);navButtons.forEach(b=>b.setAttribute('aria-expanded','false'));mobileToggle.setAttribute('aria-expanded','false');}
+function closeSearch(){header.classList.remove('search-open');searchToggle.setAttribute('aria-expanded','false');}
+function openMenu(btn){closeSearch();if(header.classList.contains('menu-open')&&selected===btn){closeMenu();return;}header.classList.add('menu-open');selected=btn;underline(btn);navButtons.forEach(b=>b.setAttribute('aria-expanded',String(b===btn)));mobileToggle.setAttribute('aria-expanded','true');}
+navButtons.forEach(b=>{b.addEventListener('click',()=>openMenu(b));b.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse'){hovered=b;underline(b);}});b.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse'){hovered=null;underline(header.classList.contains('menu-open')?selected:null);}});});
+mobileToggle.addEventListener('click',()=>{if(header.classList.contains('menu-open'))closeMenu();else openMenu(null);});
+document.querySelectorAll('.menu-column-title').forEach(btn=>btn.addEventListener('click',()=>{const col=btn.closest('.menu-column');const was=col.classList.contains('mobile-expanded');document.querySelectorAll('.menu-column').forEach(c=>c.classList.remove('mobile-expanded'));if(!was)col.classList.add('mobile-expanded');btn.setAttribute('aria-expanded',String(!was));}));
+searchToggle.addEventListener('click',()=>{closeMenu();const open=header.classList.toggle('search-open');searchToggle.setAttribute('aria-expanded',String(open));if(open)searchInput.focus();});
 document.addEventListener('pointerdown',e=>{if(!header.contains(e.target)){closeMenu();closeSearch();}});
-const cards=[...document.querySelectorAll('.category-card')];const allPanels=cards;let pinnedKey=null;
-function setActive(key){allPanels.forEach(p=>p.classList.toggle('active',p.dataset.key===key));cards.forEach(p=>p.querySelector('.mobile-detail').setAttribute('aria-expanded',String(p.dataset.key===key)));}
-for(const panel of allPanels){const key=panel.dataset.key;panel.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse'&&!pinnedKey)setActive(key)});panel.addEventListener('focusin',e=>{if(e.target.classList.contains('mobile-detail')||e.target.classList.contains('card-all'))setActive(key)});panel.querySelector('.mobile-detail').addEventListener('click',e=>{e.stopPropagation();pinnedKey=pinnedKey===key?null:key;setActive(pinnedKey)});}
-const accordion=document.querySelector('.accordion');accordion.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse'&&!pinnedKey)setActive(null)});
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeMenu();closeSearch();pinnedKey=null;setActive(null)}});
+const cards=[...document.querySelectorAll('.category-card')];let pinned=null;
+function activate(key){cards.forEach(c=>{let on=c.dataset.key===key;c.classList.toggle('active',on);const button=c.querySelector('.mobile-detail');button.setAttribute('aria-expanded',String(on));button.textContent=on?'−':'+';});}
+cards.forEach(card=>{const key=card.dataset.key;card.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse'&&!pinned)activate(key);});card.addEventListener('focusin',()=>activate(key));card.querySelector('.mobile-detail').addEventListener('click',e=>{e.stopPropagation();pinned=pinned===key?null:key;activate(pinned);});});
+document.querySelector('.accordion').addEventListener('pointerleave',e=>{if(e.pointerType==='mouse'&&!pinned)activate(null);});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeMenu();closeSearch();pinned=null;activate(null);}});
+let cachedPosts=null;async function loadPosts(){if(cachedPosts!==null)return cachedPosts;try{const r=await fetch('/search.json',{cache:'no-store'});if(!r.ok)throw Error('missing');const j=await r.json();cachedPosts=Array.isArray(j.posts)?j.posts:[];}catch{cachedPosts=[];}return cachedPosts;}
+let counter=0;searchInput.addEventListener('input',async()=>{const serial=++counter,q=searchInput.value.trim().toLocaleLowerCase();searchResults.replaceChildren();if(!q)return;const posts=await loadPosts();if(serial!==counter)return;const matches=posts.filter(p=>[p.title,p.category,p.tags,p.excerpt].join(' ').toLocaleLowerCase().includes(q)).slice(0,10);if(!matches.length){searchResults.textContent='일치하는 게시글이 없습니다.';return;}for(const p of matches){const a=document.createElement('a');a.href=p.url;a.textContent=p.title;searchResults.append(a);}});
+loadPosts().then(posts=>{if(!posts.length)return;const grid=document.querySelector('#recent-grid');grid.replaceChildren();for(const p of posts.slice(0,6)){const a=document.createElement('a');a.className='recent-post';a.href=p.url;const c=document.createElement('span');c.textContent=p.category||'FIELD NOTES';const t=document.createElement('strong');t.textContent=p.title;const d=document.createElement('small');d.textContent=p.date||'';a.append(c,t,d);grid.append(a);}});
 })();
 </script></body></html>
