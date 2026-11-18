@@ -6,7 +6,7 @@ permalink: /topics/aws/
 <nav class="bsc-breadcrumb" aria-label="현재 위치"><a href="/">HOME</a> &nbsp;/&nbsp; <span>AWS</span><span id="bsc-crumb-extra"></span></nav>
 <section class="bsc-topic-banner flip-image" aria-label="AWS"><img class="bsc-topic-image" src="/assets/img/banners/v2/aws-1x.webp" alt="" loading="eager"><h1>AWS</h1></section>
 {% assign matching = site.posts | where_exp: "post", "post.categories contains 'AWS'" | sort: "date" | reverse %}
-<div class="bsc-topic-intro"><p>클라우드 아키텍처와 운영·보안 기술을 체계적으로 정리합니다.</p><span class="bsc-topic-count">{{ matching.size }}개 게시글</span></div>
+<div class="bsc-topic-intro"><p>AWS 서비스와 아키텍처를 학습하고 운영·보안 기술을 체계적으로 정리합니다.</p><span class="bsc-topic-count">{{ matching.size }}개 게시글</span></div>
 <nav class="bsc-filters" aria-label="하위 주제 필터"><button class="bsc-filter is-current" type="button" data-topic="">전체</button>
 <button class="bsc-filter" type="button" data-topic="Fundamentals & Governance">Fundamentals & Governance</button>
 <button class="bsc-filter" type="button" data-topic="Compute & Network">Compute & Network</button>

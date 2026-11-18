@@ -6,7 +6,7 @@ permalink: /topics/security/
 <nav class="bsc-breadcrumb" aria-label="현재 위치"><a href="/">HOME</a> &nbsp;/&nbsp; <span>SECURITY</span><span id="bsc-crumb-extra"></span></nav>
 <section class="bsc-topic-banner" aria-label="SECURITY"><img class="bsc-topic-image" src="/assets/img/banners/v2/security-1x.webp" alt="" loading="eager"><h1>SECURITY</h1></section>
 {% assign matching = site.posts | where_exp: "post", "post.categories contains 'Security'" | sort: "date" | reverse %}
-<div class="bsc-topic-intro"><p>보안 기술, 탐지·관제 및 악성코드 분석 기록을 모았습니다.</p><span class="bsc-topic-count">{{ matching.size }}개 게시글</span></div>
+<div class="bsc-topic-intro"><p>보안관제와 탐지·대응, 악성코드 분석에 관한 기술과 실습을 정리합니다.</p><span class="bsc-topic-count">{{ matching.size }}개 게시글</span></div>
 <nav class="bsc-filters" aria-label="하위 주제 필터"><button class="bsc-filter is-current" type="button" data-topic="">전체</button>
 <button class="bsc-filter" type="button" data-topic="Security Basics">Security Basics</button>
 <button class="bsc-filter" type="button" data-topic="Malware Analysis">Malware Analysis</button>

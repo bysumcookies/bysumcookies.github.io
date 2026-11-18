@@ -162,7 +162,7 @@ a{color:inherit;text-decoration:none}button,input{font:inherit}button{cursor:poi
 .bsc-dialog-details{display:grid;grid-template-columns:90px 1fr;gap:12px;font-size:13px}
 .bsc-dialog-details dt{color:#888}.bsc-dialog-details dd{margin:0;overflow-wrap:anywhere}
 .bsc-dialog-verify{display:inline-block;margin-top:20px;font-size:12px;text-decoration:underline;text-underline-offset:4px}
-.bsc-about-hero{display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:35px;padding:12px 0 38px;border-bottom:1px solid #e1e1e1}
+.bsc-about-hero{display:grid;grid-template-columns:minmax(0,1fr);gap:35px;padding:12px 0 38px;border-bottom:1px solid #e1e1e1}
 .bsc-about-hero h1{font-size:clamp(39px,5.7vw,65px);letter-spacing:-.065em;font-weight:600;margin:0 0 14px}
 .bsc-about-hero p{font-size:14px;line-height:1.9;color:#666;margin:0 0 15px;max-width:720px}
 .bsc-about-aside{padding:25px;background:#f7f7f7;color:#666;font-size:12px;line-height:2;align-self:end}
@@ -185,8 +185,7 @@ a{color:inherit;text-decoration:none}button,input{font:inherit}button{cursor:poi
 .bsc-article-body .highlight pre{padding:0;margin:0}.bsc-article-body code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}
 .bsc-article-body :not(pre)>code{background:#f3f3f3;padding:2px 5px;color:#333}
 .bsc-inner-footer{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
-.bsc-inner-footer a{font-size:11px;color:#777;margin-left:20px}
-.bsc-inner-footer .bsc-motto{font-size:11px;color:#999;margin-top:5px}
+.bsc-inner-footer .bsc-motto{font-size:11px;color:#999;text-align:right}
 .menu-quicklinks{grid-column:1;align-self:start;display:flex;flex-direction:column;gap:14px;align-items:flex-start}
 .menu-quicklinks .menu-global{grid-column:auto}
 .menu-about{display:inline-flex;font-size:12px;line-height:1.45;color:#666;gap:7px}
@@ -206,7 +205,7 @@ a{color:inherit;text-decoration:none}button,input{font:inherit}button{cursor:poi
  .bsc-about-section{grid-template-columns:1fr;gap:10px}
  .menu-quicklinks{border-bottom:1px solid #eee;padding:16px 0;gap:12px}
  .menu-quicklinks .menu-global{padding:0;border:0}
- .bsc-inner-footer a{margin-left:12px}
+ .bsc-inner-footer{gap:12px}.bsc-inner-footer .bsc-motto{text-align:right}
 }
 @media(max-width:480px){.bsc-topic-banner{height:130px}.bsc-topic-banner h1{font-size:26px}.bsc-gallery{grid-template-columns:1fr 1fr}.bsc-entry h2{font-size:16px}.bsc-cert-art{height:120px}}
 
@@ -217,7 +216,7 @@ a{color:inherit;text-decoration:none}button,input{font:inherit}button{cursor:poi
 </div><div class="mega-menu" aria-label="카테고리 세부 메뉴"><div class="site-container mega-menu-inner"><div class="menu-quicklinks"><a class="menu-global" href="/all/" aria-label="모든 카테고리의 전체 게시글 보기">전체 글 보기 <span aria-hidden="true">↗</span></a><a class="menu-about" href="/about/" aria-label="About 페이지">About <span aria-hidden="true">↗</span></a></div><div class="menu-columns"><section class="menu-column" data-menu="network"><button class="menu-column-title" type="button" aria-expanded="false">NETWORK<span class="mobile-plus" aria-hidden="true">+</span></button><div class="subitems"><a class="menu-all" href="/topics/network/" aria-label="NETWORK 카테고리 전체 글 보기">All <span class="external-arrow" aria-hidden="true">↗</span></a></div></section><section class="menu-column" data-menu="security"><button class="menu-column-title" type="button" aria-expanded="false">SECURITY<span class="mobile-plus" aria-hidden="true">+</span></button><div class="subitems"><a class="menu-all" href="/topics/security/" aria-label="SECURITY 카테고리 전체 글 보기">All <span class="external-arrow" aria-hidden="true">↗</span></a><a href="/topics/security/?topic=Security%20Basics">Security Basics</a><a href="/topics/security/?topic=Malware%20Analysis">Malware Analysis</a><a href="/topics/security/?topic=Security%20Operations">Security Operations</a></div></section><section class="menu-column" data-menu="aws"><button class="menu-column-title" type="button" aria-expanded="false">AWS<span class="mobile-plus" aria-hidden="true">+</span></button><div class="subitems"><a class="menu-all" href="/topics/aws/" aria-label="AWS 카테고리 전체 글 보기">All <span class="external-arrow" aria-hidden="true">↗</span></a><a href="/topics/aws/?topic=Fundamentals%20%26%20Governance">Fundamentals & Governance</a><a href="/topics/aws/?topic=Compute%20%26%20Network">Compute & Network</a><a href="/topics/aws/?topic=Storage%20%26%20Data">Storage & Data</a><a href="/topics/aws/?topic=Security%20%26%20Architecture">Security & Architecture</a></div></section><section class="menu-column" data-menu="portfolio"><button class="menu-column-title" type="button" aria-expanded="false">PORTFOLIO<span class="mobile-plus" aria-hidden="true">+</span></button><div class="subitems"><a class="menu-all" href="/topics/portfolio/" aria-label="PORTFOLIO 카테고리 전체 글 보기">All <span class="external-arrow" aria-hidden="true">↗</span></a></div></section><section class="menu-column" data-menu="certification"><button class="menu-column-title" type="button" aria-expanded="false">CERTIFICATION<span class="mobile-plus" aria-hidden="true">+</span></button><div class="subitems"><a class="menu-all" href="/topics/certification/" aria-label="CERTIFICATION 카테고리 전체 글 보기">All <span class="external-arrow" aria-hidden="true">↗</span></a></div></section></div></div></div>
 <div class="search-panel"><label for="site-search">SEARCH</label><input id="site-search" placeholder="게시글 제목 또는 주제 검색" type="search"><p>게시글 제목과 주제로 검색합니다.</p><div class="search-results" id="search-results" role="status" aria-live="polite"></div></div></header>
 <main class="site-container bsc-inner" id="main">{{ content }}</main>
-<footer class="site-container site-footer bsc-inner-footer"><div><div>© ByteSumCookies</div><div class="bsc-motto">Byte by byte, building security.</div></div><nav aria-label="안내 링크"><a href="/about/">About</a><a href="/all/">전체 글</a><a href="/about/#contact">Contact</a><a href="https://github.com/bysumcookies" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav></footer>
+<footer class="site-container site-footer bsc-inner-footer"><span>© ByteSumCookies</span><span class="bsc-motto">Byte by byte, building security.</span></footer>
 <script>
 (()=>{
 const header=document.querySelector('.site-header');
