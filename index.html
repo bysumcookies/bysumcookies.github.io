@@ -8,9 +8,9 @@ permalink: /
 <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@1,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
 <style>
-:root{--ink:#151515;--text:#565656;--muted:#868686;--line:#e9e9e9;--content:1160px;--bg-network:#050505;--bg-aws:#C8D8EB;--bg-portfolio:#E8D3DC;--bg-certification:#D9D9E1}
+:root{--ink:#151515;--text:#565656;--muted:#868686;--line:#e9e9e9;--content:1240px;--bg-network:#050505;--bg-aws:#C8D8EB;--bg-portfolio:#E8D3DC;--bg-certification:#D9D9E1}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#fff;color:var(--ink);font-family:Inter,"Pretendard","Apple SD Gothic Neo","Noto Sans KR",-apple-system,BlinkMacSystemFont,Arial,sans-serif;-webkit-font-smoothing:antialiased}a{text-decoration:none;color:inherit}button,input{font:inherit}button{cursor:pointer}a:focus-visible,button:focus-visible{outline:2px solid #393939;outline-offset:3px}
-.site-container{width:100%;max-width:var(--content);margin:0 auto;padding:0 44px}
+.site-container{width:100%;max-width:var(--content);margin:0 auto;padding:0 24px}
 .site-header{height:110px;border-bottom:1px solid var(--line);background:#fff;position:relative;z-index:30}
 .site-header .inner{height:100%;display:flex;align-items:center;gap:30px}
 .brand{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;flex:none;line-height:1}
@@ -30,7 +30,7 @@ permalink: /
 .menu-column{border-left:1px solid #eee;padding-left:18px;min-width:0}.menu-column:first-child{border:0;padding-left:0}
 .menu-column-title{display:flex;align-items:center;justify-content:space-between;font-size:12px;font-weight:800;letter-spacing:.04em;margin-bottom:19px;border:0;background:transparent;padding:0;cursor:pointer}
 .toggle-indicator{display:none}.subitems{display:flex;flex-direction:column;gap:13px}.subitems a{font-size:12px;color:#696969;line-height:1.5}.subitems a:hover{color:#151515;text-decoration:underline;text-underline-offset:4px}
-.search-panel{position:absolute;top:97px;right:max(24px,calc((100vw - 1160px)/2 + 44px));z-index:60;width:min(390px,calc(100vw - 38px));background:#fff;padding:20px;border:1px solid #dedede;box-shadow:0 15px 30px #0000000e;display:none}.site-header.search-open .search-panel{display:block}.search-panel label{display:block;font-size:11px;font-weight:750;letter-spacing:.12em;margin-bottom:11px}.search-panel input{width:100%;border:1px solid #d7d7d7;padding:11px 12px;outline:none;font-size:13px}.search-panel input:focus{border-color:#333}.search-panel p{font-size:12px;color:#888;margin:11px 0 0}
+.search-panel{position:absolute;top:97px;right:max(20px,calc((100vw - 1240px)/2 + 24px));z-index:60;width:min(390px,calc(100vw - 38px));background:#fff;padding:20px;border:1px solid #dedede;box-shadow:0 15px 30px #0000000e;display:none}.site-header.search-open .search-panel{display:block}.search-panel label{display:block;font-size:11px;font-weight:750;letter-spacing:.12em;margin-bottom:11px}.search-panel input{width:100%;border:1px solid #d7d7d7;padding:11px 12px;outline:none;font-size:13px}.search-panel input:focus{border-color:#333}.search-panel p{font-size:12px;color:#888;margin:11px 0 0}
 .main{padding-top:0;padding-bottom:80px}
 .preview-switcher{position:relative;z-index:1;background:#fff;padding:0;display:flex;gap:7px;align-items:center}
 .preview-switcher strong{font-size:11px;font-weight:750;padding:0 10px;white-space:nowrap}.preview-switcher button{border:1px solid #ddd;padding:10px 12px;background:#fff;font-size:11px;font-weight:700;white-space:nowrap}.preview-switcher button[aria-pressed="true"]{background:#151515;color:white;border-color:#151515}
@@ -47,13 +47,13 @@ permalink: /
 .category-card.active,.intro-card.active{height:418px}
 .category-card{color:#fff}.card-network{color:#fff}
 .category-card:nth-child(n+2){border-top:1px solid #ffffff50}
-.card-visual{position:absolute;z-index:-3;inset:0;width:100%;height:100%;object-fit:contain;object-position:var(--img-pos) center;transition:transform .62s cubic-bezier(.21,1,.26,1);pointer-events:none}
-.category-card.active .card-visual{transform:scale(1.025)}
+
+.category-card.active 
 .card-scrim{position:absolute;z-index:-2;inset:0;pointer-events:none}
-.card-network .card-scrim{background:linear-gradient(90deg,#000000 10%,#000000bd 42%,transparent 74%)}
-.card-aws .card-scrim{background:linear-gradient(270deg,#9bb1ca44,#d3e1f100 70%)}
-.card-portfolio .card-scrim{background:linear-gradient(90deg,rgba(100,55,76,.82) 0%,rgba(100,55,76,.55) 40%,transparent 75%)}
-.card-certification .card-scrim{background:linear-gradient(270deg,#aab0bf36,transparent 73%)}
+
+
+
+
 .card-all{position:absolute;inset:0;z-index:1;cursor:pointer}.category-card:focus-within{outline:2px solid #555;outline-offset:-2px}.category-card.active .card-all{cursor:pointer}
 .card-copy{height:100%;width:100%;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:29px 5%;position:relative;z-index:2;pointer-events:none}
 .card-aws .card-copy,.card-certification .card-copy{align-items:flex-end;text-align:right}
@@ -80,29 +80,9 @@ permalink: /
 .demo-note{padding:28px 0 5px;font-size:12px;color:#909090;line-height:1.7}.demo-note strong{color:#555}.below{margin:45px 0 0;padding:24px 0;border-top:1px solid var(--line);font-size:12px;color:#888}
 /* Responsive */
 @media(max-width:1180px){.site-container{padding:0 35px}.primary-nav{gap:17px}.primary-nav button{font-size:10px}.header-actions{margin-left:12px}.card-copy{padding-left:5%;padding-right:5%}}
-@media(max-width:860px){.site-header{height:80px}.site-container{padding:0 21px}.site-header .inner{gap:8px}.brand-main{font-size:27px}.brand-tag{font-size:7px}.primary-nav{display:none}.mobile-menu-toggle{display:grid}.header-actions{margin-left:auto}.mega-menu{top:80px}.mega-menu-inner{padding-top:0;padding-bottom:16px;max-height:calc(100dvh - 80px);overflow-y:auto}.menu-columns{display:block}.menu-column{padding:0;border-left:0;border-bottom:1px solid #eee}.menu-column:first-child{padding:0}.menu-column-title{width:100%;margin:0;padding:16px 0;font-size:12px;text-align:left}.toggle-indicator{display:block;color:#888;font-weight:400;font-size:20px}.menu-column.mobile-expanded .toggle-indicator{transform:rotate(45deg)}.subitems{display:none;padding:0 0 18px 8px;gap:13px}.menu-column.mobile-expanded .subitems{display:flex}.search-panel{top:70px;right:14px}.editorial-hero{min-height:205px;padding:32px 0 38px;grid-template-columns:1fr}.hero-watermark{font-size:clamp(72px,21vw,132px)}.editorial-copy{padding:0;margin-top:-22px}.editorial-head{font-size:21px}.category-heading{padding-bottom:16px}.category-heading span{display:none}.category-card,.intro-card{height:166px}.category-card.active,.intro-card.active{height:320px}.card-copy h2{font-size:29px}.card-caption{font-size:12px;max-width:70%;line-height:1.4}.card-copy{padding:20px 5%}.card-aws .card-copy,.card-certification .card-copy{align-items:flex-start;text-align:left}.card-aws .topic-links,.card-certification .topic-links{justify-content:flex-start}.card-description{font-size:12px;margin:13px 0 12px;max-width:72%;line-height:1.55}.topic-link{font-size:10px;padding:6px 8px}.card-extra{max-width:100%}.card-visual{object-position:var(--img-pos) center}.intro-inner h2{font-size:21px}.intro-card::before{font-size:58px;right:-10px}.mobile-detail{display:flex;align-items:center;justify-content:center;position:absolute;bottom:12px;right:12px;z-index:8;width:36px;height:36px;border:1px solid #7776;background:#ffffff7a;color:inherit;font-size:22px;font-weight:300}.card-network .mobile-detail{background:#00000063;border-color:#fff6}.category-heading{flex-wrap:wrap;gap:12px}.preview-switcher{padding:0;gap:5px}.preview-switcher strong{display:none}.preview-switcher button{font-size:10px;padding:10px 9px}.demo-note{font-size:11px}}
+@media(max-width:860px){.site-header{height:80px}.site-container{padding:0 21px}.site-header .inner{gap:8px}.brand-main{font-size:27px}.brand-tag{font-size:7px}.primary-nav{display:none}.mobile-menu-toggle{display:grid}.header-actions{margin-left:auto}.mega-menu{top:80px}.mega-menu-inner{padding-top:0;padding-bottom:16px;max-height:calc(100dvh - 80px);overflow-y:auto}.menu-columns{display:block}.menu-column{padding:0;border-left:0;border-bottom:1px solid #eee}.menu-column:first-child{padding:0}.menu-column-title{width:100%;margin:0;padding:16px 0;font-size:12px;text-align:left}.toggle-indicator{display:block;color:#888;font-weight:400;font-size:20px}.menu-column.mobile-expanded .toggle-indicator{transform:rotate(45deg)}.subitems{display:none;padding:0 0 18px 8px;gap:13px}.menu-column.mobile-expanded .subitems{display:flex}.search-panel{top:70px;right:14px}.editorial-hero{min-height:205px;padding:32px 0 38px;grid-template-columns:1fr}.hero-watermark{font-size:clamp(72px,21vw,132px)}.editorial-copy{padding:0;margin-top:-22px}.editorial-head{font-size:21px}.category-heading{padding-bottom:16px}.category-heading span{display:none}.category-card,.intro-card{height:166px}.category-card.active,.intro-card.active{height:320px}.card-copy h2{font-size:29px}.card-caption{font-size:12px;max-width:70%;line-height:1.4}.card-copy{padding:20px 5%}.card-aws .card-copy,.card-certification .card-copy{align-items:flex-start;text-align:left}.card-aws .topic-links,.card-certification .topic-links{justify-content:flex-start}.card-description{font-size:12px;margin:13px 0 12px;max-width:72%;line-height:1.55}.topic-link{font-size:10px;padding:6px 8px}.card-extra{max-width:100%}.intro-inner h2{font-size:21px}.intro-card::before{font-size:58px;right:-10px}.mobile-detail{display:flex;align-items:center;justify-content:center;position:absolute;bottom:12px;right:12px;z-index:8;width:36px;height:36px;border:1px solid #7776;background:#ffffff7a;color:inherit;font-size:22px;font-weight:300}.card-network .mobile-detail{background:#00000063;border-color:#fff6}.category-heading{flex-wrap:wrap;gap:12px}.preview-switcher{padding:0;gap:5px}.preview-switcher strong{display:none}.preview-switcher button{font-size:10px;padding:10px 9px}.demo-note{font-size:11px}}
 @media(max-width:390px){.brand-main{font-size:24px}.brand-tag{letter-spacing:.43em}.card-copy h2{font-size:24px}.card-description{max-width:86%}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
-
-/* Image placement by category: preserve the original composition as panels expand. */
-.card-visual{max-width:none;transform:translateY(-50%);top:50%;bottom:auto;object-fit:contain}
-.card-network .card-visual{width:650px;height:650px;left:auto;right:7%;object-fit:cover}
-.card-aws .card-visual,.card-certification .card-visual{width:auto;height:max(370px,100%);left:0;right:auto;object-fit:contain;-webkit-mask-image:linear-gradient(to right,#000 0%,#000 75%,transparent 100%);mask-image:linear-gradient(to right,#000 0%,#000 75%,transparent 100%)}
-.card-portfolio .card-visual{width:100%;height:auto;left:0;right:auto;object-fit:contain;-webkit-mask-image:linear-gradient(to right,transparent 0%,#000 32%,#000 100%);mask-image:linear-gradient(to right,transparent 0%,#000 32%,#000 100%)}
-.category-card.active .card-visual{transform:translateY(-50%) scale(1.017)}
-.card-network .card-scrim{background:linear-gradient(90deg,#000 2%,#000b 33%,transparent 77%)}
-.card-aws .card-scrim{background:linear-gradient(270deg,rgba(43,64,89,.88),rgba(43,64,89,.55) 37%,transparent 74%)}
-.card-certification .card-scrim{background:linear-gradient(270deg,rgba(54,56,73,.87),rgba(54,56,73,.53) 37%,transparent 73%)}
-@media(max-width:860px){.card-network .card-visual{width:440px;height:440px;right:-12%}.card-aws .card-visual,.card-certification .card-visual{height:max(260px,100%)}.card-portfolio .card-visual{width:100%;height:auto}.card-portfolio .card-scrim{background:linear-gradient(90deg,rgba(100,55,76,.9),rgba(100,55,76,.63) 53%,transparent 100%)}}
-
-/* Mobile: readable banner typography above the artwork. */
-@media(max-width:860px){
-.card-copy h2{font-size:clamp(22px,6.4vw,28px);max-width:100%;white-space:normal;overflow-wrap:anywhere}
-.card-certification .card-copy h2{font-size:clamp(20px,5.6vw,25px)}
-.card-caption{font-size:11px;max-width:74%}
-.card-aws .card-scrim{background:linear-gradient(90deg,rgba(43,64,89,.88),rgba(43,64,89,.64) 48%,transparent 100%)}
-.card-certification .card-scrim{background:linear-gradient(90deg,rgba(54,56,73,.87),rgba(54,56,73,.65) 47%,transparent 100%)}
-}
 
 #search-results{margin-top:12px;max-height:285px;overflow-y:auto}
 #search-results a{display:block;padding:10px 0;border-bottom:1px solid #eee;font-size:12px;line-height:1.4}
@@ -117,40 +97,47 @@ permalink: /
 .recent-post strong{font-size:15px;line-height:1.45;letter-spacing:-.02em}
 @media(max-width:860px){.recent-grid{grid-template-columns:1fr}.recent-post{min-height:0}}
 
-/* Keep the white background full width; constrain content and scale banner
-   artwork by intrinsic aspect ratio rather than fixed poster heights. */
-@media(min-width:861px){
-  .category-card .card-visual{
-    width:100%;
-    height:auto;
-    max-width:none;
-    left:0;
-    right:auto;
-    top:50%;
-    bottom:auto;
-    object-fit:contain;
-    object-position:center;
-    transform:translateY(-50%);
-  }
-  .category-card.active .card-visual{
-    transform:translateY(-50%);
-  }
-  .card-network .card-visual{
-    width:min(650px,65%);
-    height:auto;
-    left:auto;
-    right:5%;
-    object-fit:contain;
-  }
-  .card-aws .card-visual,
-  .card-certification .card-visual,
-  .card-portfolio .card-visual{
-    width:100%;
-    height:auto;
-    left:0;
-    right:auto;
-  }
+
+/* Canonical Tistory-reference banner sizing. One source of truth. */
+:root { --content:1240px; }
+.site-container{max-width:var(--content);padding-left:24px;padding-right:24px}
+.search-panel{right:max(20px,calc((100vw - 1240px)/2 + 24px))}
+.category-card{height:280px;transition:height .50s cubic-bezier(.22,1,.36,1);border:0!important;}
+.category-card.active{height:450px}
+.category-card .card-visual,.card-network .card-visual,.card-aws .card-visual,.card-portfolio .card-visual,.card-certification .card-visual{
+position:absolute;inset:0;top:0;right:0;bottom:0;left:0;width:100%;height:100%;max-width:none;
+object-fit:cover;object-position:center center;mask-image:none;-webkit-mask-image:none;transform:none!important;transition:none;
 }
+.category-card .card-scrim{background:none}
+.card-network .card-scrim{background:none}
+.card-aws .card-scrim,.card-certification .card-scrim{background:linear-gradient(90deg,transparent 45%,rgba(34,47,65,.17) 59%,rgba(37,48,64,.69) 100%)}
+.card-portfolio .card-scrim{background:linear-gradient(90deg,rgba(100,56,71,.63),rgba(100,56,71,.23) 38%,transparent 67%)}
+.card-copy{padding:28px 4.2%}
+.card-copy h2{font-size:clamp(38px,3.85vw,49px);font-weight:500;letter-spacing:-.025em;line-height:1.1;margin-bottom:12px}
+.card-caption{font-size:15px;line-height:1.55}
+.card-description{font-size:14px;line-height:1.7;margin:17px 0 16px}
+.card-aws .card-copy,.card-certification .card-copy{padding-right:4.2%;}
+.go-pill{border:0;margin-top:26px;width:42px;height:42px;border-radius:50%;background:#050505;color:white;display:inline-flex;align-items:center;justify-content:center;font-size:14px;font-weight:400;padding:0;opacity:1}
+.go-pill{flex:0 0 42px;line-height:1;box-sizing:border-box}.go-pill span{display:none}.card-aws .card-caption{max-width:600px}
+.card-network .go-pill{background:transparent}
+.card-extra{display:none;opacity:0;visibility:hidden;overflow:visible;pointer-events:none;}
+.category-card.active .card-extra{display:block;visibility:visible;opacity:1;pointer-events:auto;animation:revealDetails .22s ease .2s both;}@keyframes revealDetails{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.topic-links{gap:10px}
+.topic-link{border:1px solid currentColor;box-sizing:border-box;padding:9px 12px;background:#10101019;line-height:1.35;color:#fff;opacity:1;white-space:nowrap}
+@media(max-width:860px){
+.site-container{padding-left:17px;padding-right:17px}
+.category-card{height:172px}.category-card.active{height:355px}
+.card-copy{padding:20px 5%}
+.card-copy h2{font-size:clamp(22px,6.4vw,29px)}
+.card-caption{font-size:11px}
+.card-description{font-size:12px;margin:14px 0}
+.card-aws .card-copy,.card-certification .card-copy{align-items:flex-start;text-align:left}
+.card-aws .topic-links,.card-certification .topic-links{justify-content:flex-start}
+.card-aws .card-scrim,.card-certification .card-scrim{background:linear-gradient(90deg,rgba(26,37,52,.77),rgba(26,37,52,.45) 50%,transparent 100%)}
+.card-portfolio .card-scrim{background:linear-gradient(90deg,rgba(100,56,71,.76),rgba(100,56,71,.35) 65%,transparent)}
+.go-pill{width:30px;height:30px;flex-basis:30px;margin-top:12px;font-size:12px}
+}
+.card-art{position:absolute;inset:0;z-index:-3;display:block;pointer-events:none}.card-art .card-visual{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;max-width:none}
 </style></head><body>
 <header class="site-header"><div class="site-container inner">
 <a class="brand" href="/" aria-label="ByteSumCookies 홈"><span class="brand-main">Byte<em>Sum</em>Cookies</span><span class="brand-tag">FIELD NOTES</span></a>
@@ -169,7 +156,7 @@ permalink: /
 <div class="accordion" role="region" aria-label="가로형 아코디언 배너">
 
 <article class="category-card card-network" data-key="network" style="--panel-bg:var(--bg-network);--img-pos:right">
-  <img class="card-visual" src="/assets/img/banners/network.webp" alt="" draggable="false" />
+  <picture class="card-art"><source media="(max-width: 860px)" srcset="/assets/img/banners/v2/network-mobile.webp"><img class="card-visual" src="/assets/img/banners/v2/network-1x.webp" srcset="/assets/img/banners/v2/network-2x.webp 2x" alt="" draggable="false" decoding="async" /></picture>
   <span class="card-scrim" aria-hidden="true"></span>
   <a class="card-all" href="/topics/network/" aria-label="NETWORK 카테고리 전체 보기"></a>
   <div class="card-copy"><span class="card-index">01 / CATEGORIES</span><h2>NETWORK</h2><p class="card-caption">OSI 7 Layer · TCP/IP · Protocol</p>
@@ -179,7 +166,7 @@ permalink: /
   <button class="mobile-detail" type="button" aria-label="NETWORK 세부 카테고리 펼치기" aria-expanded="false">+</button>
   </article>
 <article class="category-card card-aws" data-key="aws" style="--panel-bg:var(--bg-aws);--img-pos:left">
-  <img class="card-visual" src="/assets/img/banners/aws.webp" alt="" draggable="false" />
+  <picture class="card-art"><source media="(max-width: 860px)" srcset="/assets/img/banners/v2/aws-mobile.webp"><img class="card-visual" src="/assets/img/banners/v2/aws-1x.webp" srcset="/assets/img/banners/v2/aws-2x.webp 2x" alt="" draggable="false" decoding="async" /></picture>
   <span class="card-scrim" aria-hidden="true"></span>
   <a class="card-all" href="/topics/aws/" aria-label="AWS 카테고리 전체 보기"></a>
   <div class="card-copy"><span class="card-index">02 / CATEGORIES</span><h2>AWS</h2><p class="card-caption">Architecture · Governance · Identity · Networking · Storage · Database</p>
@@ -189,7 +176,7 @@ permalink: /
   <button class="mobile-detail" type="button" aria-label="AWS 세부 카테고리 펼치기" aria-expanded="false">+</button>
   </article>
 <article class="category-card card-portfolio" data-key="portfolio" style="--panel-bg:var(--bg-portfolio);--img-pos:right">
-  <img class="card-visual" src="/assets/img/banners/portfolio.webp" alt="" draggable="false" />
+  <picture class="card-art"><source media="(max-width: 860px)" srcset="/assets/img/banners/v2/portfolio-mobile.webp"><img class="card-visual" src="/assets/img/banners/v2/portfolio-1x.webp" srcset="/assets/img/banners/v2/portfolio-2x.webp 2x" alt="" draggable="false" decoding="async" /></picture>
   <span class="card-scrim" aria-hidden="true"></span>
   <a class="card-all" href="/topics/portfolio/" aria-label="PORTFOLIO 카테고리 전체 보기"></a>
   <div class="card-copy"><span class="card-index">03 / CATEGORIES</span><h2>PORTFOLIO</h2><p class="card-caption">Projects · Labs · Build Records</p>
@@ -199,7 +186,7 @@ permalink: /
   <button class="mobile-detail" type="button" aria-label="PORTFOLIO 세부 카테고리 펼치기" aria-expanded="false">+</button>
   </article>
 <article class="category-card card-certification" data-key="certification" style="--panel-bg:var(--bg-certification);--img-pos:right">
-  <img class="card-visual" src="/assets/img/banners/certification.webp" alt="" draggable="false" />
+  <picture class="card-art"><source media="(max-width: 860px)" srcset="/assets/img/banners/v2/certification-mobile.webp"><img class="card-visual" src="/assets/img/banners/v2/certification-1x.webp" srcset="/assets/img/banners/v2/certification-2x.webp 2x" alt="" draggable="false" decoding="async" /></picture>
   <span class="card-scrim" aria-hidden="true"></span>
   <a class="card-all" href="/topics/certification/" aria-label="CERTIFICATION 카테고리 전체 보기"></a>
   <div class="card-copy"><span class="card-index">04 / CATEGORIES</span><h2>CERTIFICATION</h2><p class="card-caption">Cloud · IT · Security Certifications</p>
