@@ -1,37 +1,29 @@
 ---
-layout: page
+layout: bsc
 title: SECURITY
 permalink: /topics/security/
-icon: fas fa-folder-open
 ---
-
-{% assign posts_in_category = site.posts | where_exp: "post", "post.categories contains 'Security'" %}
-<div id="category-summary"><p>이 카테고리의 학습 기록과 프로젝트를 모아둔 공간입니다.</p></div>
-{% if posts_in_category.size > 0 %}
-<div id="topic-list">
-{% for post in posts_in_category %}
-  <article class="topic-article" data-fields="{{ post.categories | join: ' ' | escape }} {{ post.tags | join: ' ' | escape }}">
-    <h3><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3>
-    <small>{{ post.date | date: '%Y.%m.%d' }}</small>
-  </article>
+<nav class="bsc-breadcrumb" aria-label="현재 위치"><a href="/">HOME</a> &nbsp;/&nbsp; <span>SECURITY</span><span id="bsc-crumb-extra"></span></nav>
+<section class="bsc-topic-banner" aria-label="SECURITY"><img class="bsc-topic-image" src="/assets/img/banners/v2/security-1x.webp" alt="" loading="eager"><h1>SECURITY</h1></section>
+{% assign matching = site.posts | where_exp: "post", "post.categories contains 'Security'" | sort: "date" | reverse %}
+<div class="bsc-topic-intro"><p>보안 기술, 탐지·관제 및 악성코드 분석 기록을 모았습니다.</p><span class="bsc-topic-count">{{ matching.size }}개 게시글</span></div>
+<nav class="bsc-filters" aria-label="하위 주제 필터"><button class="bsc-filter is-current" type="button" data-topic="">전체</button>
+<button class="bsc-filter" type="button" data-topic="Security Basics">Security Basics</button>
+<button class="bsc-filter" type="button" data-topic="Malware Analysis">Malware Analysis</button>
+<button class="bsc-filter" type="button" data-topic="Security Operations">Security Operations</button></nav>
+<div class="bsc-post-list" id="bsc-topic-posts">
+{% for post in matching %}
+<article class="bsc-entry" data-fields="{{ post.categories | join: ' ' | escape }} {{ post.tags | join: ' ' | escape }} {{ post.subcategory | escape }}"><a href="{{ post.url | relative_url }}"><span class="bsc-date">{{ post.date | date: '%Y.%m.%d' }}{% if post.subcategory %} · {{ post.subcategory | escape }}{% endif %}</span><h2>{{ post.title | escape }}</h2><p class="bsc-excerpt">{{ post.excerpt | strip_html | normalize_whitespace | truncate: 135 | escape }}</p></a><span class="bsc-arrow" aria-hidden="true">↗</span></article>
 {% endfor %}
-</div>
-<p id="topic-empty" hidden>해당 세부 주제의 게시글이 아직 없습니다.</p>
-{% else %}
-<p>아직 이 카테고리에 게시글이 없습니다. 기존 티스토리 글을 순차적으로 이전할 예정입니다.</p>
-{% endif %}
-<style>.topic-article{padding:18px 0;border-bottom:1px solid var(--main-border-color)}.topic-article h3{font-size:1.08rem;margin:0 0 6px}.topic-article small{opacity:.65}</style>
+<p class="bsc-empty" id="bsc-topic-empty"{% if matching.size > 0 %} hidden{% endif %}>아직 이 주제에 등록된 게시글이 없습니다.</p></div>
 <script>
-(function(){
-  const term=new URLSearchParams(location.search).get('topic');
-  if(!term)return;
-  const list=document.querySelectorAll('.topic-article');
-  if(!list.length)return;
-  let visible=0;
-  list.forEach(el=>{const matched=el.dataset.fields.toLowerCase().includes(term.toLowerCase());el.hidden=!matched;if(matched)visible++;});
-  const notice=document.getElementById('topic-empty');
-  if(notice)notice.hidden=visible!==0;
-  const summary=document.getElementById('category-summary');
-  if(summary){const e=document.createElement('p');e.textContent='선택한 주제: '+term;summary.append(e);}
+(()=>{
+const entries=[...document.querySelectorAll('#bsc-topic-posts .bsc-entry')];
+const buttons=[...document.querySelectorAll('.bsc-filter')];
+const empty=document.querySelector('#bsc-topic-empty');
+const extra=document.querySelector('#bsc-crumb-extra');
+function apply(topic){let count=0;entries.forEach(e=>{const ok=!topic||e.dataset.fields.toLowerCase().includes(topic.toLowerCase());e.hidden=!ok;if(ok)count++});empty.hidden=count!==0;buttons.forEach(b=>b.classList.toggle('is-current',b.dataset.topic===topic));extra.textContent=topic?' / '+topic:'';}
+buttons.forEach(b=>b.addEventListener('click',()=>{const topic=b.dataset.topic;const url=new URL(location.href);if(topic)url.searchParams.set('topic',topic);else url.searchParams.delete('topic');history.replaceState({},'',url);apply(topic)}));
+apply(new URLSearchParams(location.search).get('topic')||'');
 })();
 </script>

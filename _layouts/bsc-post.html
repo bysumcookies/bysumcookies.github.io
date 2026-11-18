@@ -1,0 +1,8 @@
+---
+layout: bsc
+---
+<article class="bsc-article">
+<nav class="bsc-breadcrumb"><a href="/">HOME</a>{% if page.categories.size > 0 %} &nbsp;/&nbsp; <a href="/topics/{{ page.categories.first | downcase }}/">{{ page.categories.first | upcase | escape }}</a>{% endif %}{% if page.subcategory %} &nbsp;/&nbsp; {{ page.subcategory | escape }}{% endif %}</nav>
+<header class="bsc-article-header"><time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: '%Y.%m.%d' }}</time><h1>{{ page.title | escape }}</h1>{% if page.description %}<p class="bsc-muted">{{ page.description | escape }}</p>{% endif %}</header>
+<div class="bsc-article-body">{{ content }}</div>
+</article>

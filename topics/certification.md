@@ -1,37 +1,17 @@
 ---
-layout: page
+layout: bsc
 title: CERTIFICATION
 permalink: /topics/certification/
-icon: fas fa-folder-open
 ---
-
-{% assign posts_in_category = site.posts | where_exp: "post", "post.categories contains 'Certification'" %}
-<div id="category-summary"><p>이 카테고리의 학습 기록과 프로젝트를 모아둔 공간입니다.</p></div>
-{% if posts_in_category.size > 0 %}
-<div id="topic-list">
-{% for post in posts_in_category %}
-  <article class="topic-article" data-fields="{{ post.categories | join: ' ' | escape }} {{ post.tags | join: ' ' | escape }}">
-    <h3><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3>
-    <small>{{ post.date | date: '%Y.%m.%d' }}</small>
-  </article>
-{% endfor %}
-</div>
-<p id="topic-empty" hidden>해당 세부 주제의 게시글이 아직 없습니다.</p>
-{% else %}
-<p>아직 이 카테고리에 게시글이 없습니다. 기존 티스토리 글을 순차적으로 이전할 예정입니다.</p>
-{% endif %}
-<style>.topic-article{padding:18px 0;border-bottom:1px solid var(--main-border-color)}.topic-article h3{font-size:1.08rem;margin:0 0 6px}.topic-article small{opacity:.65}</style>
+<nav class="bsc-breadcrumb" aria-label="현재 위치"><a href="/">HOME</a> &nbsp;/&nbsp; <span>CERTIFICATION</span><span id="bsc-crumb-extra"></span></nav>
+<section class="bsc-topic-banner flip-image" aria-label="CERTIFICATION"><img class="bsc-topic-image" src="/assets/img/banners/v2/certification-1x.webp" alt="" loading="eager"><h1>CERTIFICATION</h1></section>
+<div class="bsc-topic-intro"><p>취득한 자격증과 공식 인증 배지를 모아둔 공간입니다. 학습 과정 대신 취득 정보와 인증 자료를 간결하게 정리합니다.</p><span class="bsc-topic-count">{{ site.data.bsc_certifications.size }}개 자격</span></div>
+<nav class="bsc-filters" aria-label="자격증 종류 필터"><button class="bsc-filter is-current" data-filter="전체">전체</button><button class="bsc-filter" data-filter="클라우드">클라우드</button><button class="bsc-filter" data-filter="국가기술자격">국가기술자격</button><button class="bsc-filter" data-filter="기타 자격">기타 자격</button></nav>
+<div class="bsc-gallery" id="bsc-cert-gallery">{% for cert in site.data.bsc_certifications %}
+<button type="button" class="bsc-cert-card" data-group="{{ cert.group | escape }}" data-title="{{ cert.title | escape }}" data-issuer="{{ cert.issuer | escape }}" data-obtained="{{ cert.obtained | escape }}" data-verify="{{ cert.verify_url | escape }}"><span class="bsc-cert-art" data-kind="{{ cert.kind }}">{% if cert.image != empty %}{% if cert.image %}<img src="{{ cert.image | relative_url }}" alt="{{ cert.title | escape }} 인증 이미지">{% else %}<svg aria-hidden="true" viewBox="0 0 88 88" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="44" cy="36" r="22"/><path d="m34 36 7 7 14-16M30 56l-4 25 18-11 18 11-4-25"/></svg>{% endif %}{% endif %}</span><span class="bsc-cert-info"><span class="bsc-cert-label">{{ cert.group | escape }}</span><h2>{{ cert.title | escape }}</h2><p>{{ cert.issuer | escape }}</p><span class="bsc-cert-view">자격 정보 보기 <span>↗</span></span></span></button>
+{% endfor %}</div>
+<p class="bsc-cert-note">증서·배지 이미지는 공식 파일을 준비한 후 등록합니다. 개인 식별 정보가 포함된 자격증 번호는 공개하지 않습니다.</p>
+<div class="bsc-dialog" id="bsc-cert-dialog" hidden role="dialog" aria-modal="true" aria-labelledby="bsc-dialog-title"><div class="bsc-dialog-panel"><div class="bsc-dialog-heading"><h2 id="bsc-dialog-title">자격 정보</h2><button type="button" id="bsc-dialog-close" aria-label="닫기">×</button></div><div class="bsc-dialog-art">증서 · 공식 배지 이미지 준비 중</div><dl class="bsc-dialog-details"><dt>발급기관</dt><dd id="bsc-dialog-issuer"></dd><dt>취득일</dt><dd id="bsc-dialog-date"></dd></dl><a id="bsc-dialog-verify" class="bsc-dialog-verify" href="#" target="_blank" rel="noopener noreferrer" hidden>공식 검증 링크 ↗</a></div></div>
 <script>
-(function(){
-  const term=new URLSearchParams(location.search).get('topic');
-  if(!term)return;
-  const list=document.querySelectorAll('.topic-article');
-  if(!list.length)return;
-  let visible=0;
-  list.forEach(el=>{const matched=el.dataset.fields.toLowerCase().includes(term.toLowerCase());el.hidden=!matched;if(matched)visible++;});
-  const notice=document.getElementById('topic-empty');
-  if(notice)notice.hidden=visible!==0;
-  const summary=document.getElementById('category-summary');
-  if(summary){const e=document.createElement('p');e.textContent='선택한 주제: '+term;summary.append(e);}
-})();
+(()=>{const filters=[...document.querySelectorAll('.bsc-filter')],cards=[...document.querySelectorAll('.bsc-cert-card')],dialog=document.querySelector('#bsc-cert-dialog'),close=document.querySelector('#bsc-dialog-close'),verify=document.querySelector('#bsc-dialog-verify');let opener=null;filters.forEach(b=>b.addEventListener('click',()=>{const value=b.dataset.filter;filters.forEach(x=>x.classList.toggle('is-current',x===b));cards.forEach(card=>card.hidden=value!=='전체'&&card.dataset.group!==value)}));cards.forEach(card=>card.addEventListener('click',()=>{opener=card;document.querySelector('#bsc-dialog-title').textContent=card.dataset.title;document.querySelector('#bsc-dialog-issuer').textContent=card.dataset.issuer;document.querySelector('#bsc-dialog-date').textContent=card.dataset.obtained;verify.hidden=!card.dataset.verify;if(card.dataset.verify)verify.href=card.dataset.verify;dialog.hidden=false;close.focus()}));function hide(){dialog.hidden=true;if(opener)opener.focus()}close.addEventListener('click',hide);dialog.addEventListener('click',e=>{if(e.target===dialog)hide()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!dialog.hidden)hide()})})();
 </script>
