@@ -7,6 +7,16 @@ url: "https://bysumcookies.github.io"
 baseurl: ""
 social_preview_image: /assets/img/brand/og-image.png
 
+# Independent Jekyll SEO features; no Chirpy dependency.
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+feed:
+  posts_limit: 20
+  excerpt_only: true
+  icon: /favicon-32.png
+
 markdown: kramdown
 highlighter: rouge
 permalink: /posts/:title/

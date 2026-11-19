@@ -76,3 +76,13 @@ PR은 빌드·검증까지만 실행하며, `main`에 반영될 때 GitHub Pages
 ## 출처와 라이선스
 
 이 저장소는 초기에 Chirpy Starter를 기반으로 생성되었으나, 현재 페이지의 디자인과 빌드 설정은 별도 구성입니다. 기존 코드·자산의 라이선스 의무는 `LICENSE` 및 각 원저작자 고지에 따릅니다.
+
+## SEO 및 검색엔진 관리
+
+- Jekyll 공식 플러그인 `jekyll-sitemap`과 `jekyll-feed`가 빌드 시 `/sitemap.xml`, `/feed.xml`(Atom)을 자동 생성합니다. 두 파일은 수동으로 수정하지 않습니다.
+- `robots.txt`에서 검색엔진에 Sitemap URL을 안내합니다.
+- 홈페이지와 모든 게시글·카테고리의 `<head>`에 자기 자신을 가리키는 절대 URL canonical을 넣습니다.
+- 글마다 `title`, 선택적 `description`, `date`(원래 게시일), `tags`, `original_url`을 작성합니다. 설명이 비어 있으면 글의 excerpt를 사용합니다.
+- 새로운 글은 별도 SEO HTML 수정 없이 자동으로 사이트맵·피드에 추가됩니다. 검색 결과 노출은 검색엔진 정책에 따릅니다.
+- Search Console 소유권 인증과 Sitemap 제출은 계정 소유자가 진행해야 합니다. Sitemap은 `https://bysumcookies.github.io/sitemap.xml` 입니다.
+- `original_url`은 이전 티스토리 원문으로 가는 **참고 링크**입니다. 새 글의 canonical은 GitHub URL을 사용하므로, 옛 티스토리에서 가능한 경우 새 글로 리디렉션하거나 이전 안내를 제공해 두 사이트의 중복 페이지를 별도로 관리합니다.
