@@ -1,8 +1,63 @@
 ---
 layout: bsc
 ---
-<article class="bsc-article">
-<nav class="bsc-breadcrumb"><a href="/">HOME</a>{% if page.categories.size > 0 %} &nbsp;/&nbsp; <a href="/topics/{{ page.categories.first | downcase }}/">{{ page.categories.first | upcase | escape }}</a>{% endif %}{% if page.subcategory %} &nbsp;/&nbsp; {{ page.subcategory | escape }}{% endif %}</nav>
-<header class="bsc-article-header"><time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: '%Y.%m.%d' }}</time><h1>{{ page.title | escape }}</h1>{% if page.description %}<p class="bsc-muted">{{ page.description | escape }}</p>{% endif %}</header>
-<div class="bsc-article-body">{{ content }}</div>
-</article>
+<div class="bsc-post-grid">
+  <aside class="bsc-post-toc" aria-label="게시글 목차">
+    <p class="bsc-toc-caption">ON THIS PAGE</p>
+    <nav class="bsc-toc-nav" id="bsc-toc-desktop" aria-label="게시글 제목별 이동"></nav>
+  </aside>
+  <article class="bsc-article">
+    <nav class="bsc-breadcrumb" aria-label="현재 위치"><a href="/">HOME</a>{% if page.categories.size > 0 %} &nbsp;/&nbsp; <a href="/topics/{{ page.categories.first | downcase }}/">{{ page.categories.first | upcase | escape }}</a>{% endif %}{% if page.subcategory %} &nbsp;/&nbsp; {{ page.subcategory | escape }}{% endif %}</nav>
+    <header class="bsc-article-header bsc-article-header-dark">
+      <div class="bsc-article-meta">
+        {% if page.original_url %}<span>ORIGINAL POST</span><span class="bsc-post-meta-dot" aria-hidden="true"></span>{% endif %}
+        <time datetime="{{ page.date | date: '%Y-%m-%dT%H:%M:%S%:z' }}">{{ page.date | date: '%Y.%m.%d %H:%M' }}</time>
+      </div>
+      <h1>{{ page.title | escape }}</h1>
+    </header>
+    <details class="bsc-post-mobile-toc" id="bsc-post-mobile-toc">
+      <summary>ON THIS PAGE <span>목차 보기</span></summary>
+      <nav id="bsc-toc-mobile" aria-label="모바일 게시글 목차"></nav>
+    </details>
+    <div class="bsc-article-body" id="bsc-article-body">{{ content }}</div>
+    {% if page.original_url %}
+      <div class="bsc-post-original-link"><span>ORIGINAL ARTICLE</span><a href="{{ page.original_url | escape }}" target="_blank" rel="noopener noreferrer">티스토리 원문 보기 ↗</a></div>
+    {% endif %}
+  </article>
+</div>
+<script>
+(()=>{
+ const body=document.getElementById('bsc-article-body');
+ if(!body)return;
+ const headings=[...body.querySelectorAll('h2,h3')],seen=new Set();
+ for(const [i,h] of headings.entries()){
+  let id=h.id||'section-'+String(i+1).padStart(2,'0');
+  while(seen.has(id))id+='-2';
+  h.id=id;seen.add(id);
+ }
+ function makeToc(id){
+  const nav=document.getElementById(id);if(!nav)return;
+  const list=document.createElement('ul');list.className='bsc-toc-list';
+  for(const h of headings){
+   const li=document.createElement('li');li.className=h.tagName==='H3'?'bsc-toc-subitem':'bsc-toc-item';
+   const a=document.createElement('a');a.href='#'+encodeURIComponent(h.id);a.dataset.headingId=h.id;
+   a.textContent=h.textContent.trim();li.append(a);list.append(li);
+  }nav.replaceChildren(list);
+ }
+ makeToc('bsc-toc-desktop');makeToc('bsc-toc-mobile');
+ const links=[...document.querySelectorAll('.bsc-toc-list a')];
+ function updateActive(){
+  let selected=headings[0]?.id;
+  for(const h of headings){if(h.getBoundingClientRect().top<=155)selected=h.id;else break;}
+  links.forEach(link=>{
+   const active=link.dataset.headingId===selected;link.classList.toggle('is-active',active);
+   if(active)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current');
+  });
+ }
+ let queued=false;
+ window.addEventListener('scroll',()=>{if(queued)return;queued=true;requestAnimationFrame(()=>{updateActive();queued=false;});},{passive:true});
+ window.addEventListener('resize',updateActive,{passive:true});
+ document.getElementById('bsc-toc-mobile')?.addEventListener('click',e=>{if(e.target.closest('a'))document.getElementById('bsc-post-mobile-toc').open=false;});
+ updateActive();
+})();
+</script>

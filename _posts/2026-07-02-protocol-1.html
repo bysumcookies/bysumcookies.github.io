@@ -1,0 +1,649 @@
+---
+layout: bsc-post
+title: "프로토콜 1: FTP · SMTP/POP3/IMAP · ICMP"
+date: 2026-07-02 22:59:00 +0900
+categories:
+  - Network
+tags:
+  - Protocol
+  - FTP
+  - SMTP
+  - POP3
+  - IMAP
+  - ICMP
+original_url: "https://bytesumcookies.tistory.com/30"
+permalink: /posts/protocol-1/
+---
+
+<p>* ICMP 메시지 추가 정리 - Destination unreachable / Redirect / Time Exceeded</p>
+<h2 id="section-01">1. 프로토콜이란</h2>
+<ul>
+<li>네트워크에서 장비나 프로그램끼리 통신하기 위해 정해둔 규칙의 집합</li>
+<li>통신에서 발생하는 특정 문제를 해결하기 위한 규칙이다.</li>
+<li>예를 들면:
+<ul>
+<li>FTP: 파일을 주고받는 <em>규칙</em></li>
+<li>SMTP: 이메일을 보내고 전달하는 <em>규칙</em></li>
+<li>POP3: 메일 서버에서 메일을 내려받는 <em>규칙</em></li>
+<li>IMAP: 서버에 있는 메일함을 동기화하며 관리하는<em> 규칙</em></li>
+<li>ICMP: IP 통신 중 오류나 상태를 알려주는 <em>규칙</em></li>
+</ul>
+</li>
+<li>프로토콜은 역할을 나눈다.
+<ul>
+<li>실제 통신에서는 하나의 프로토콜이 모든 일을 처리하지 않는다.</li>
+<li>상황에 따라 필요한 역할이 다르고, 그 역할에 맞는 프로토콜이 사용된다.</li>
+</ul>
+</li>
+<li>RFC
+<ul>
+<li>Request for Comments</li>
+<li>인터넷 기술과 프로토콜에 대한 표준이나 기술 문서를 설명하는 문서 체계</li>
+<li>그 중 일부가 인터넷 표준으로 인정된다.</li>
+<li>그 프로토콜이 원래 어떤 문제를 해결하려고 만들어졌고(설계 의도),<br/>어떤 방식으로 동작하도록 정의되었는지 확인할 수 있다.</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="section-02">2. 계층별 프로토콜의 특징</h2>
+<div class="table-scroll table-wide"><table>
+<tbody>
+<tr>
+<th>TCP/IP 계층</th>
+<th>OSI 대응</th>
+<th>대표 프로토콜</th>
+<th>프로토콜의 관심사</th>
+</tr>
+<tr>
+<td>응용 계층</td>
+<td>5~7계층</td>
+<td>HTTP, HTTPS, FTP, SMTP, POP3, IMAP,<br/>DNS, DHCP, SSH, Telnet, SNMP</td>
+<td>실제 매체에서 어떻게 전달할 것인가</td>
+</tr>
+<tr>
+<td>전송 계층</td>
+<td>4계층</td>
+<td>TCP, UDP</td>
+<td>어느 프로그램에게, 어떤 방식으로 전달할 것인가</td>
+</tr>
+<tr>
+<td>인터넷 계층</td>
+<td>3계층</td>
+<td>IP, ICMP, ARP, 라우팅 프로토콜</td>
+<td>어느 네트워크의 어느 호스트로 보낼 것인가</td>
+</tr>
+<tr>
+<td>네트워크 접근 계층</td>
+<td>1~2계층</td>
+<td>Ethernet, Wi-Fi, PPP 등</td>
+<td>실제 매체에서 어떻게 전달할 것인가</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>네트워크 통신은 하나의 프로토콜이 모든 일을 처리하는 것이 아니라,<br/>계층별로 역할을 나누어 처리한다.</li>
+<li>각 계층의 프로토콜은 자기 계층의 역할에 집중하고,<br/>아래 계층의 기능을 이용해 위 계층에 서비스를 제공한다.</li>
+</ul>
+<p><strong>네트워크 접근 계층</strong></p>
+<table>
+<tbody>
+<tr>
+<th>프로토콜/표준</th>
+<th>특징</th>
+</tr>
+<tr>
+<td>Ethernet</td>
+<td>유선 LAN에서 많이 사용하는 데이터링크 계층 기술</td>
+</tr>
+<tr>
+<td>Wi-Fi</td>
+<td>무선 LAN 통신을 위한 IEEE 802.11 계열</td>
+</tr>
+<tr>
+<td>PPP</td>
+<td>두 지점 간 직접 연결에 사용되는 프로토콜</td>
+</tr>
+<tr>
+<td>ARP</td>
+<td>IP 주소를 MAC 주소로 변환하는 데 사용됨</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>같은 네트워크 안에서 실제로 데이터를 전달하는 규칙과 관련</li>
+</ul>
+<p><strong>인터넷 계층</strong></p>
+<table>
+<tbody>
+<tr>
+<th>프로토콜</th>
+<th>특징</th>
+</tr>
+<tr>
+<td>IP</td>
+<td>목적지 IP 주소를 기준으로 패킷을 전달</td>
+</tr>
+<tr>
+<td>ICMP</td>
+<td>IP 통신 중 오류나 상태를 알려줌</td>
+</tr>
+<tr>
+<td>RIP / OSPF</td>
+<td>내부 네트워크 라우팅 프로토콜</td>
+</tr>
+<tr>
+<td>BGP</td>
+<td>인터넷 규모의 라우팅 프로토콜</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>서로 다른 네트워크 사이에서 목적지까지 패킷을 전달하는 역할</li>
+<li>IP는 패킷을 목적지까지 보내려고 하지만, 전송 성공을 보장하지 않는다.<br/>전송 중 문제가 생겼을 때 그 상태를 알려주는 데 ICMP가 사용된다.</li>
+</ul>
+<p><strong>전송 계층</strong></p>
+<table>
+<tbody>
+<tr>
+<th>프로토콜</th>
+<th>특징</th>
+</tr>
+<tr>
+<td>TCP</td>
+<td>연결 지향, 신뢰성 보장, 순서 보장, 재전송</td>
+</tr>
+<tr>
+<td>UDP</td>
+<td>비연결형, 빠르고 단순함, 신뢰성 보장은 응용에서 처리</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>프로세스와 프로세스 간 통신 담당</li>
+<li>핵심은 포트번호, 신뢰성, 연결성</li>
+<li>FTP, SMTP, POP3, IMAP은 응용 계층의 프로토콜이지만,<br/>실제 데이터를 주고 받을 때는 전송 계층의 TCP를 사용한다.</li>
+</ul>
+<p><strong>응용 계층</strong></p>
+<table>
+<tbody>
+<tr>
+<th>프로토콜</th>
+<th>특징</th>
+</tr>
+<tr>
+<td>HTTP/HTTPS</td>
+<td>웹 페이지 요청과 응답</td>
+</tr>
+<tr>
+<td>FTP</td>
+<td>파일 전송</td>
+</tr>
+<tr>
+<td>SMTP</td>
+<td>이메일 송신 및 서버 간 전달</td>
+</tr>
+<tr>
+<td>POP3</td>
+<td>메일 서버에서 클라이언트로 메일 가져오기</td>
+</tr>
+<tr>
+<td>IMAP</td>
+<td>서버 메일함 접근 및 동기화</td>
+</tr>
+<tr>
+<td>DNS</td>
+<td>도메인 이름을 IP 주소로 변환</td>
+</tr>
+<tr>
+<td>DHCP</td>
+<td>IP 주소 등 네트워크 설정 자동 할당</td>
+</tr>
+<tr>
+<td>SSH</td>
+<td>보안 원격 접속</td>
+</tr>
+<tr>
+<td>Telnet</td>
+<td>원격 접속, 평문 기반이라 보안 취약</td>
+</tr>
+<tr>
+<td>SNMP</td>
+<td>네트워크 장비 관리</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>사용자가 실제로 이용하는 서비스에 가장 가까운 프로토콜</li>
+</ul>
+
+<h2 id="section-03">3. FTP</h2>
+<ul>
+<li>File Transfer Protocol</li>
+<li>네트워크상에서 클라이언트와 서버 사이에 <strong>파일을 전송하기 위한 프로토콜</strong></li>
+<li>RFC 959:
+<ul>
+<li>호스트 간 파일을 효율적이고 신뢰성 있게 전송하고<br/>원격 파일 저장소를 사용할 수 있게 하는 것이 주요 목적이라고 설명한다.</li>
+</ul>
+</li>
+<li>주요 명령어
+<ul>
+<li>USER, PASS, LIST, RETR, STOR</li>
+</ul>
+</li>
+</ul>
+<p><strong>특징: 제어채널과 데이터채널 분리</strong></p>
+<ul>
+<li>FTP는 연결을 하나만 쓰지 않고, 목적에 따라 연결을 나눈다.</li>
+</ul>
+<table>
+<tbody>
+<tr>
+<th>구분</th>
+<th>역할</th>
+<th>일반적인 포트</th>
+</tr>
+<tr>
+<td>제어채널</td>
+<td>로그인, 명령어, 응답 처리</td>
+<td>TCP 21</td>
+</tr>
+<tr>
+<td>데이터채널</td>
+<td>실제 파일 목록/파일 내용 전송</td>
+<td>기본 TCP 20 또는 별도 포트</td>
+</tr>
+</tbody>
+</table>
+<p><strong>동작흐름</strong></p>
+<ul>
+<li>예를 들면 사용자가 FTP 서버에서 파일을 다운로드할 때:
+<ol>
+<li>클라이언트가 FTP 서버에 접속</li>
+<li><em>제어채널 연결</em></li>
+<li>사용자 인증</li>
+<li>LIST, RETR, STOR 같은 명령 전송</li>
+<li><em>데이터채널 연결</em></li>
+<li>파일 목록 또는 파일 데이터 전송</li>
+<li>데이터채널 종료</li>
+<li>제어채널은 계속 유지되거나 종료</li>
+</ol>
+</li>
+<li>FTP는 명령을 주고받는 통로와 실제 파일이 이동하는 통로가 분리되어 있기 때문에,<br/>제어채널 연결과 데이터채널 연결이 순차적으로 각각 필요하다.</li>
+</ul>
+<p><strong>모드종류</strong></p>
+<ul>
+<li>FTP는 데이터채널을 여는 방식에 따라 Active Mode/Passive Mode로 나뉜다.</li>
+</ul>
+<div class="table-scroll table-wide"><table>
+<tbody>
+<tr>
+<th>구분</th>
+<th>특징</th>
+<th>제어 채널</th>
+<th>데이터 채널</th>
+</tr>
+<tr>
+<td>Active Mode</td>
+<td>서버가 클라이언트 쪽으로 데이터 연결을 시도</td>
+<td>21번</td>
+<td>20번</td>
+</tr>
+<tr>
+<td>Passive Mode</td>
+<td>클라이언트가 서버가 알려준 포트로 데이터 연결을 시도</td>
+<td>21번</td>
+<td>서버 지정 랜덤 포트</td>
+</tr>
+</tbody>
+</table>
+<p><strong>보안관점</strong></p>
+<ul>
+<li>FTP는 전통적으로 사용자 이름, 비밀번호, 파일 내용이 평문으로 오갈 수 있어서 보안에 취약하다.</li>
+<li>그래서 실제 운영 환경에서는 보안이 필요한 경우 FTPS/SFTP 같은 대안을 사용한다.</li>
+<li>SFTP는 FTP의 보안을 강화한 버전이라기보다,<br/>SSH 기반의 별도 파일 전송 프로토콜에 가깝다.</li>
+</ul>
+
+<h2 id="section-04">4. 이메일 프로토콜: SMTP/POP3/IMAP</h2>
+<p><strong>이메일 전송 흐름</strong></p>
+<blockquote class="flow-quote">보낸 사람 메일 클라이언트<br/>        ↓ SMTP<br/>보낸 사람 메일 서버<br/>        ↓ SMTP<br/>받는 사람 메일 서버<br/>        ↓ POP3 또는 IMAP<br/>받는 사람 메일 클라이언트</blockquote>
+<p><strong>프로토콜별 역할</strong></p>
+<table>
+<tbody>
+<tr>
+<th>프로토콜</th>
+<th>역할</th>
+<th>핵심 이미지</th>
+</tr>
+<tr>
+<td>SMTP</td>
+<td>메일 송신 및 서버 간 전달</td>
+<td>보낸다</td>
+</tr>
+<tr>
+<td>POP3</td>
+<td>서버의 메일을 클라이언트로 가져옴</td>
+<td>내려받는다</td>
+</tr>
+<tr>
+<td>IMAP</td>
+<td>서버 메일함을 클라이언트에서 동기화하며 관리</td>
+<td>동기화한다</td>
+</tr>
+</tbody>
+</table>
+<h3 id="section-05">4-1. SMTP</h3>
+<table>
+<tbody>
+<tr>
+<th>항목</th>
+<th>내용</th>
+</tr>
+<tr>
+<td>이름</td>
+<td>Simple Mail Transfer Protocol</td>
+</tr>
+<tr>
+<td>역할</td>
+<td>이메일 송신, 서버 간 메일 전달</td>
+</tr>
+<tr>
+<td>계층</td>
+<td>응용 계층</td>
+</tr>
+<tr>
+<td>전송 계층</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>대표 포트</td>
+<td>25, 메일 제출은 587도 사용</td>
+</tr>
+<tr>
+<td>핵심 명령</td>
+<td>HELO/EHLO, MAIL FROM, RCPT TO, DATA, QUIT</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>메일을 보내고 전달하는 프로토콜</li>
+<li>SMTP의 메일 트랜잭션은 크게
+<ul>
+<li>MAIL 명령으로 송신자를 지정하고,</li>
+<li>RCPT 명령으로 수신자를 지정한 뒤,</li>
+<li>DATA 명령으로 실제 메일 데이터를 전송하는 구조이다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="section-06">4-2. POP3</h3>
+<table>
+<tbody>
+<tr>
+<th>항목</th>
+<th>내용</th>
+</tr>
+<tr>
+<td>이름</td>
+<td>Post Office Protocol Version 3</td>
+</tr>
+<tr>
+<td>역할</td>
+<td>서버에 도착한 메일을 클라이언트로 가져오기</td>
+</tr>
+<tr>
+<td>계층</td>
+<td>응용 계층</td>
+</tr>
+<tr>
+<td>전송 계층</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>대표 포트</td>
+<td>110</td>
+</tr>
+<tr>
+<td>특징</td>
+<td>다운로드 중심, 서버 조작 기능은 제한적</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>메일 서버에 도착한 메일을 클라이언트로 가져오는 프로토콜</li>
+<li>간단하게는 메일을 내 기기로 내려받는 방식에 가깝다.</li>
+<li>때문에 단일 기기에서 메일을 확인하던 과거 환경에 잘 맞는 방식이다.</li>
+<li>RFC 1939:
+<ul>
+<li>POP3는 보통 서버가 보관 중인 메일을 워크스테이션이 가져오도록 하는 데 사용된다.</li>
+<li>서버 위에서 메일을 복잡하게 조작하는 기능을 제공하려는 것은 아니다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="section-07">4-3. IMAP</h3>
+<table>
+<tbody>
+<tr>
+<th>항목</th>
+<th>내용</th>
+</tr>
+<tr>
+<td>이름</td>
+<td>Internet Message Access Protocol</td>
+</tr>
+<tr>
+<td>역할</td>
+<td>서버의 메일함을 클라이언트에서 접근·동기화</td>
+</tr>
+<tr>
+<td>계층</td>
+<td>응용 계층</td>
+</tr>
+<tr>
+<td>전송 계층</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>대표 포트</td>
+<td>143</td>
+</tr>
+<tr>
+<td>특징</td>
+<td>서버 중심 관리, 여러 기기 동기화에 유리</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>서버의 메일함을 클라이언트에서 접근하고 동기화하는 프로토콜</li>
+<li>IMAP4rev2는 클라이언트가 서버의 전자메일 메시지에 접근하고 조작할 수 있게 한다.</li>
+<li>원격 메일함을 로컬 폴더처럼 다루고<br/>오프라인 클라이언트가 다시 동기화할 수 있는 기능도 제공한다.</li>
+<li>간단하게 말하면 단순히 내려받는 것보다,<br/>메일함을 여러 기기에서 동기화하면서 관리하는 방식에 가깝다.</li>
+<li>RFC 9051:
+<ul>
+<li>IMAP이 메일 게시/발송 기능을 직접 정의하지 않는다.<br/>그 기능은 별도의 mail submission 프로토콜이 담당한다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="section-08">4-4. 차이점 정리</h3>
+<div class="table-scroll table-wide"><table>
+<tbody>
+<tr>
+<th>구분</th>
+<th>SMTP</th>
+<th>POP3</th>
+<th>IMAP</th>
+</tr>
+<tr>
+<td>주요 역할</td>
+<td>메일 송신/전달</td>
+<td>메일 가져오기</td>
+<td>메일함 동기화/관리</td>
+</tr>
+<tr>
+<td>방향</td>
+<td>클라이언트 → 서버, 서버 → 서버</td>
+<td>서버 → 클라이언트</td>
+<td>서버 ↔ 클라이언트</td>
+</tr>
+<tr>
+<td>서버 보관</td>
+<td>전송 중심</td>
+<td>내려받고 삭제하는 모델이 기본적</td>
+<td>서버 보관 중심</td>
+</tr>
+<tr>
+<td>여러 기기 사용</td>
+<td>해당 없음</td>
+<td>불편할 수 있음</td>
+<td>유리함</td>
+</tr>
+<tr>
+<td>대표 포트</td>
+<td>25 / 587</td>
+<td>110</td>
+<td>143</td>
+</tr>
+<tr>
+<td>비유</td>
+<td>우체국 발송/배송</td>
+<td>우편함에서 편지 꺼내오기</td>
+<td>서버 우편함을 원격으로 관리</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="section-09">5. ICMP</h2>
+<ul>
+<li>Internet Control Message Protocol</li>
+<li>위에 나온 프로토콜들과 달리 응용 계층 프로토콜이 아니라,<br/>인터넷 계층에서 IP 통신의 오류나 상태를 알려주는 <strong>제어·진단용 프로토콜</strong></li>
+<li>RFC 792:
+<ul>
+<li>ICMP의 목적은 IP를 신뢰성 있는 프로토콜로 만드는 것이 아니라,<br/>통신 환경에서 발생한 문제에 대한 피드백을 제공하는 것이다.</li>
+<li>ICMP 메시지는 IP 헤더를 사용해 전송된다.</li>
+<li>ICMP 메시지의 첫 번째 필드인 Type 값에 따라 메시지 형식이 달라진다.</li>
+</ul>
+</li>
+<li>TCP/UDP 위에서 동작하는 게 아니라 IP 계층에서 동작하므로,<br/>일반적인 의미의 TCP/UDP 포트 번호를 사용하지 않는다.</li>
+<li>메시지 구조: Type과 Code로 구분</li>
+<li>활용 예시: ping, traceroute</li>
+<li>주의점: 보안 정책상 차단될 수 있음</li>
+</ul>
+<p><strong>대표 ICMP 메시지</strong></p>
+<table>
+<tbody>
+<tr>
+<th>Type</th>
+<th>메시지</th>
+<th>의미</th>
+</tr>
+<tr>
+<td>0</td>
+<td>Echo Reply</td>
+<td>Echo 요청에 대한 응답</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td><strong>Destination Unreachable</strong></td>
+<td><strong>목적지 도달 불가</strong></td>
+</tr>
+<tr>
+<td><strong>5</strong></td>
+<td><strong>Redirect</strong></td>
+<td><strong>더 적절한 경로 안내</strong></td>
+</tr>
+<tr>
+<td>8</td>
+<td>Echo</td>
+<td>Echo 요청, ping에서 사용</td>
+</tr>
+<tr>
+<td><strong>11</strong></td>
+<td><strong>Time Exceeded</strong></td>
+<td><strong>TTL 초과 등 시간 초과</strong></td>
+</tr>
+<tr>
+<td>12</td>
+<td>Parameter Problem</td>
+<td>IP 헤더 등 매개변수 문제</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="section-10">6. 정리</h2>
+<p><strong>계층별 프로토콜과 특징 정리</strong></p>
+<div class="table-scroll table-wide"><table>
+<tbody>
+<tr>
+<th>계층</th>
+<th>역할</th>
+<th>중점/대표 프로토콜</th>
+<th>정리</th>
+</tr>
+<tr>
+<td>네트워크 접근 계층</td>
+<td>같은 네트워크 내 실제 전달</td>
+<td>Ethernet, Wi-Fi, ARP</td>
+<td>프레임, MAC 주소 기반 전달</td>
+</tr>
+<tr>
+<td>인터넷 계층</td>
+<td>네트워크 간 패킷 전달</td>
+<td>IP, ICMP</td>
+<td>IP는 전달, ICMP는 오류/상태 보고</td>
+</tr>
+<tr>
+<td>전송 계층</td>
+<td>프로세스 간 전송</td>
+<td>TCP, UDP</td>
+<td>TCP는 신뢰성, UDP는 단순성과 속도</td>
+</tr>
+<tr>
+<td>응용 계층</td>
+<td>사용자 서비스 제공</td>
+<td>FTP, SMTP, POP3, IMAP, HTTP, DNS</td>
+<td>파일, 메일, 웹 등 목적별 프로토콜</td>
+</tr>
+</tbody>
+</table>
+<p><strong>프로토콜 포트 번호 정리</strong></p>
+<table>
+<tbody>
+<tr>
+<th>프로토콜</th>
+<th>역할</th>
+<th>포트</th>
+</tr>
+<tr>
+<td>FTP 제어</td>
+<td>명령/응답</td>
+<td>21</td>
+</tr>
+<tr>
+<td>FTP 데이터</td>
+<td>파일 데이터</td>
+<td>20</td>
+</tr>
+<tr>
+<td>SMTP</td>
+<td>메일 송신</td>
+<td>25</td>
+</tr>
+<tr>
+<td>POP3</td>
+<td>메일 수신/다운로드</td>
+<td>110</td>
+</tr>
+<tr>
+<td>IMAP</td>
+<td>메일 접근/동기화</td>
+<td>143</td>
+</tr>
+<tr>
+<td>ICMP</td>
+<td>오류/상태 메시지</td>
+<td>포트 사용 안 함</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>계층별 프로토콜은 각 계층의 역할에 따라 서로 다른 목적과 특징을 가진다.</li>
+<li>각 프로토콜의 포트 번호를 정확히 아는 것 또한 중요하다.<br/>단순 암기가 아니라, 패킷 분석/보안 관제/취약점 진단에서 <em>어떤 서비스</em>가 동작하는지 파악하는 기준이 된다.</li>
+</ul>

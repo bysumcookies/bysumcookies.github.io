@@ -1,0 +1,58 @@
+# Pages CMS configuration: editing layer for this Jekyll blog.
+media:
+  input: assets/img/posts
+  output: /assets/img/posts
+content:
+  - name: posts
+    label: 게시글
+    type: collection
+    path: _posts
+    format: yaml-frontmatter
+    filename:
+      template: "{year}-{month}-{day}-{primary}.html"
+      field: create
+    view:
+      fields: [title, date, categories, subcategory]
+      primary: title
+      sort: [date, title]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: 제목
+        type: string
+        required: true
+      - name: date
+        label: 최초 게시일
+        type: date
+        required: true
+        options:
+          time: true
+          format: "yyyy-MM-dd HH:mm:ss xx"
+      - name: categories
+        label: 카테고리
+        type: select
+        required: true
+        options:
+          multiple: true
+          min: 1
+          max: 1
+          values: [Network, Security, AWS, Portfolio, Certification]
+      - name: subcategory
+        label: 하위 분류
+        type: string
+      - name: tags
+        label: 태그
+        type: string
+        list: true
+      - name: original_url
+        label: 원문 링크 (이전 글만)
+        type: string
+      - name: body
+        label: 본문 편집
+        type: rich-text
+        required: true
+        options:
+          format: html
+          switcher: true
