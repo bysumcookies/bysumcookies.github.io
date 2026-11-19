@@ -32,9 +32,9 @@ a{color:inherit;text-decoration:none}button,input{font:inherit}button{cursor:poi
 .brand-tag{font-family:"Apple SD Gothic Neo","Pretendard","Noto Sans KR",sans-serif;font-size:10px;font-weight:650;letter-spacing:.025em;line-height:1.25;margin:8px 0 0 2px}
 .primary-nav,.menu-columns{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0}
 .primary-nav{height:100%;align-items:center;transform:translateY(-6px)}
-.primary-nav button{position:relative;justify-self:center;min-width:0;max-width:100%;padding:16px 0;border:0;background:none;font-size:11px;letter-spacing:.055em;font-weight:750;white-space:nowrap;color:#303030}
-.primary-nav button::after{content:"";position:absolute;bottom:8px;left:0;right:0;border-bottom:1px solid #151515;transform:scaleX(0);transform-origin:left;transition:transform .18s}
-.primary-nav button.is-underlined::after{transform:scaleX(1)}
+.primary-nav a{position:relative;justify-self:center;min-width:0;max-width:100%;padding:16px 0;border:0;background:none;font-size:11px;letter-spacing:.055em;font-weight:750;white-space:nowrap;color:#303030}
+.primary-nav a::after{content:"";position:absolute;bottom:8px;left:0;right:0;border-bottom:1px solid #151515;transform:scaleX(0);transform-origin:left;transition:transform .18s}
+.primary-nav a.is-underlined::after{transform:scaleX(1)}
 .header-actions{display:flex;gap:0;justify-content:end;align-items:center;transform:translateY(-6px)}
 .icon-button{display:grid;place-items:center;border:0;background:transparent;width:42px;height:42px;color:#161616;padding:0}.icon-button:hover{opacity:.6}.icon-button svg{display:block}
 .mobile-menu-toggle{display:none}
@@ -43,6 +43,7 @@ a{color:inherit;text-decoration:none}button,input{font:inherit}button{cursor:poi
 .mega-menu-inner{display:grid;grid-template-columns:var(--logo-column) minmax(0,1fr) var(--header-tool);column-gap:var(--header-gap);padding-top:24px;padding-bottom:28px}
 .menu-columns{grid-column:2;align-items:start}
 .menu-column{padding:0;min-width:0;display:flex;flex-direction:column;align-items:stretch}.menu-column-title{font-size:11px;letter-spacing:.055em;font-weight:750;color:#303030;background:transparent;border:0;padding:0;margin:0 0 17px;display:none;text-align:left;white-space:nowrap}
+.mobile-expand-toggle{display:none}
 .mobile-plus{display:none}.subitems{display:flex;flex-direction:column;gap:14px;padding-left:var(--submenu-indent,0px);padding-right:6px;width:100%;max-width:100%;align-items:stretch}
 .subitems a{display:block;width:100%;text-align:left;font-size:12px;color:#777;line-height:1.5;overflow-wrap:anywhere;transition:color .17s ease}
 .subitems a:hover,.subitems a:focus-visible{color:#111;text-decoration:underline;text-underline-offset:3px}
@@ -89,14 +90,16 @@ a{color:inherit;text-decoration:none}button,input{font:inherit}button{cursor:poi
 .recent-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
 .recent-post{display:flex;flex-direction:column;gap:10px;border:1px solid #e5e5e5;padding:20px;min-height:140px}.recent-post:hover{border-color:#aaa}.recent-post span,.recent-post small,.recent-empty{color:#888;font-size:11px}.recent-post strong{font-size:15px;line-height:1.45}
 .site-footer{font-size:11px;color:#aaa;padding-block:23px;border-top:1px solid #eee}
-@media(max-width:1170px){:root{--logo-column:243px;--header-gap:12px;--side:30px}.primary-nav button,.menu-column-title{font-size:10px}}
-@media(max-width:950px){:root{--logo-column:217px;--header-gap:8px;--side:22px}.brand-main{font-size:26px}.primary-nav button,.menu-column-title{font-size:9px}}
+@media(max-width:1170px){:root{--logo-column:243px;--header-gap:12px;--side:30px}.primary-nav a,.menu-column-title{font-size:10px}}
+@media(max-width:950px){:root{--logo-column:217px;--header-gap:8px;--side:22px}.brand-main{font-size:26px}.primary-nav a,.menu-column-title{font-size:9px}}
 @media(max-width:860px){
  :root{--side:18px}
  .site-header{height:78px}.site-header .inner{display:flex;gap:8px}.brand-main{font-size:26px}.brand-tag{font-size:9px;letter-spacing:.025em}
  .primary-nav{display:none}.header-actions{margin-left:auto;transform:none}.mobile-menu-toggle{display:grid}
  .mega-menu{top:78px}.mega-menu-inner{display:block;padding-top:0;padding-bottom:15px;max-height:calc(100dvh - 78px);overflow-y:auto}.menu-global{display:flex;border-bottom:1px solid #eee;padding:16px 0;width:100%}.menu-columns{display:block}
  .menu-column{display:block;border-bottom:1px solid #eee}.menu-column-title{font-size:12px;width:100%;padding:16px 0;margin:0;display:flex;justify-content:space-between;align-items:center}
+ .menu-column-link{display:block;flex:1;min-width:0;text-align:left;padding:3px 0;font-weight:750;letter-spacing:.055em}
+ .mobile-expand-toggle{width:42px;height:42px;flex:none;display:grid;place-items:center;background:transparent;border:0;color:#555}
  .mobile-plus{display:block;font-size:20px;color:#8c8c8c;font-weight:300}.menu-column.mobile-expanded .mobile-plus{transform:rotate(45deg)}
  .subitems{display:none;width:100%;max-width:none;padding:0 0 17px 8px}.menu-column.mobile-expanded .subitems{display:flex}.menu-column .subitems a{text-align:left}.menu-column .menu-all{justify-content:flex-start}
  .menu-column .subitems a{color:#686868}
@@ -222,38 +225,37 @@ a{color:inherit;text-decoration:none}button,input{font:inherit}button{cursor:poi
 
 </style></head><body>
 <header class="site-header"><div class="site-container inner"><a class="brand" href="/" aria-label="ByteSumCookies 홈"><span class="brand-main">Byte<em>Sum</em>Cookies</span><span class="brand-tag">보안 기술 아카이브</span></a>
-<nav class="primary-nav" aria-label="상위 카테고리"><button type="button" data-target="network" aria-expanded="false">NETWORK</button><button type="button" data-target="security" aria-expanded="false">SECURITY</button><button type="button" data-target="aws" aria-expanded="false">AWS</button><button type="button" data-target="portfolio" aria-expanded="false">PORTFOLIO</button><button type="button" data-target="certification" aria-expanded="false">CERTIFICATION</button></nav>
+<nav class="primary-nav" aria-label="상위 카테고리"><a href="/topics/network/" data-target="network" aria-controls="site-mega-menu" aria-expanded="false">NETWORK</a><a href="/topics/security/" data-target="security" aria-controls="site-mega-menu" aria-expanded="false">SECURITY</a><a href="/topics/aws/" data-target="aws" aria-controls="site-mega-menu" aria-expanded="false">AWS</a><a href="/topics/portfolio/" data-target="portfolio" aria-controls="site-mega-menu" aria-expanded="false">PORTFOLIO</a><a href="/topics/certification/" data-target="certification" aria-controls="site-mega-menu" aria-expanded="false">CERTIFICATION</a></nav>
 <div class="header-actions"><button class="icon-button" id="search-trigger" aria-expanded="false" aria-label="검색 열기" type="button"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round"><circle cx="10.7" cy="10.7" r="6.6"></circle><path d="M15.5 15.5L21 21"></path></svg></button><button class="icon-button mobile-menu-toggle" id="mobile-menu-toggle" aria-label="카테고리 메뉴 열기" aria-expanded="false" type="button"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.45" stroke-linecap="round"><path d="M3 8h18M3 16h18"></path></svg></button></div>
-</div><div class="mega-menu" aria-label="카테고리 세부 메뉴"><div class="site-container mega-menu-inner"><div class="menu-quicklinks"><a class="menu-global" href="/all/" aria-label="모든 카테고리의 전체 게시글 보기">전체 글 보기 <span aria-hidden="true">↗</span></a><a class="menu-about" href="/about/" aria-label="About 페이지">About <span aria-hidden="true">↗</span></a></div><div class="menu-columns"><section class="menu-column" data-menu="network"><button class="menu-column-title" type="button" aria-expanded="false">NETWORK<span class="mobile-plus" aria-hidden="true">+</span></button><div class="subitems"><a class="menu-all" href="/topics/network/" aria-label="NETWORK 카테고리 전체 글 보기">All <span class="external-arrow" aria-hidden="true">↗</span></a></div></section><section class="menu-column" data-menu="security"><button class="menu-column-title" type="button" aria-expanded="false">SECURITY<span class="mobile-plus" aria-hidden="true">+</span></button><div class="subitems"><a class="menu-all" href="/topics/security/" aria-label="SECURITY 카테고리 전체 글 보기">All <span class="external-arrow" aria-hidden="true">↗</span></a><a href="/topics/security/?topic=Security%20Basics">Security Basics</a><a href="/topics/security/?topic=Malware%20Analysis">Malware Analysis</a><a href="/topics/security/?topic=Security%20Operations">Security Operations</a></div></section><section class="menu-column" data-menu="aws"><button class="menu-column-title" type="button" aria-expanded="false">AWS<span class="mobile-plus" aria-hidden="true">+</span></button><div class="subitems"><a class="menu-all" href="/topics/aws/" aria-label="AWS 카테고리 전체 글 보기">All <span class="external-arrow" aria-hidden="true">↗</span></a><a href="/topics/aws/?topic=Fundamentals%20%26%20Governance">Fundamentals & Governance</a><a href="/topics/aws/?topic=Compute%20%26%20Network">Compute & Network</a><a href="/topics/aws/?topic=Storage%20%26%20Data">Storage & Data</a><a href="/topics/aws/?topic=Security%20%26%20Architecture">Security & Architecture</a></div></section><section class="menu-column" data-menu="portfolio"><button class="menu-column-title" type="button" aria-expanded="false">PORTFOLIO<span class="mobile-plus" aria-hidden="true">+</span></button><div class="subitems"><a class="menu-all" href="/topics/portfolio/" aria-label="PORTFOLIO 카테고리 전체 글 보기">All <span class="external-arrow" aria-hidden="true">↗</span></a></div></section><section class="menu-column" data-menu="certification"><button class="menu-column-title" type="button" aria-expanded="false">CERTIFICATION<span class="mobile-plus" aria-hidden="true">+</span></button><div class="subitems"><a class="menu-all" href="/topics/certification/" aria-label="CERTIFICATION 카테고리 전체 글 보기">All <span class="external-arrow" aria-hidden="true">↗</span></a></div></section></div></div></div>
+</div><div class="mega-menu" id="site-mega-menu" aria-label="카테고리 세부 메뉴"><div class="site-container mega-menu-inner"><div class="menu-quicklinks"><a class="menu-global" href="/all/" aria-label="모든 카테고리의 전체 게시글 보기">전체 글 보기 <span aria-hidden="true">↗</span></a><a class="menu-about" href="/about/" aria-label="About 페이지">About <span aria-hidden="true">↗</span></a></div><div class="menu-columns"><section class="menu-column" data-menu="network"><div class="menu-column-title"><a class="menu-column-link" href="/topics/network/">NETWORK</a><button type="button" class="mobile-expand-toggle" aria-expanded="false" aria-controls="menu-sub-network" aria-label="NETWORK 하위 메뉴 펼치기"><span class="mobile-plus" aria-hidden="true">+</span></button></div><div class="subitems" id="menu-sub-network"><a class="menu-all" href="/topics/network/" aria-label="NETWORK 카테고리 전체 글 보기">All <span class="external-arrow" aria-hidden="true">↗</span></a></div></section><section class="menu-column" data-menu="security"><div class="menu-column-title"><a class="menu-column-link" href="/topics/security/">SECURITY</a><button type="button" class="mobile-expand-toggle" aria-expanded="false" aria-controls="menu-sub-security" aria-label="SECURITY 하위 메뉴 펼치기"><span class="mobile-plus" aria-hidden="true">+</span></button></div><div class="subitems" id="menu-sub-security"><a class="menu-all" href="/topics/security/" aria-label="SECURITY 카테고리 전체 글 보기">All <span class="external-arrow" aria-hidden="true">↗</span></a><a href="/topics/security/?topic=Security%20Basics">Security Basics</a><a href="/topics/security/?topic=Malware%20Analysis">Malware Analysis</a><a href="/topics/security/?topic=Security%20Operations">Security Operations</a></div></section><section class="menu-column" data-menu="aws"><div class="menu-column-title"><a class="menu-column-link" href="/topics/aws/">AWS</a><button type="button" class="mobile-expand-toggle" aria-expanded="false" aria-controls="menu-sub-aws" aria-label="AWS 하위 메뉴 펼치기"><span class="mobile-plus" aria-hidden="true">+</span></button></div><div class="subitems" id="menu-sub-aws"><a class="menu-all" href="/topics/aws/" aria-label="AWS 카테고리 전체 글 보기">All <span class="external-arrow" aria-hidden="true">↗</span></a><a href="/topics/aws/?topic=Fundamentals%20%26%20Governance">Fundamentals & Governance</a><a href="/topics/aws/?topic=Compute%20%26%20Network">Compute & Network</a><a href="/topics/aws/?topic=Storage%20%26%20Data">Storage & Data</a><a href="/topics/aws/?topic=Security%20%26%20Architecture">Security & Architecture</a></div></section><section class="menu-column" data-menu="portfolio"><div class="menu-column-title"><a class="menu-column-link" href="/topics/portfolio/">PORTFOLIO</a><button type="button" class="mobile-expand-toggle" aria-expanded="false" aria-controls="menu-sub-portfolio" aria-label="PORTFOLIO 하위 메뉴 펼치기"><span class="mobile-plus" aria-hidden="true">+</span></button></div><div class="subitems" id="menu-sub-portfolio"><a class="menu-all" href="/topics/portfolio/" aria-label="PORTFOLIO 카테고리 전체 글 보기">All <span class="external-arrow" aria-hidden="true">↗</span></a></div></section><section class="menu-column" data-menu="certification"><div class="menu-column-title"><a class="menu-column-link" href="/topics/certification/">CERTIFICATION</a><button type="button" class="mobile-expand-toggle" aria-expanded="false" aria-controls="menu-sub-certification" aria-label="CERTIFICATION 하위 메뉴 펼치기"><span class="mobile-plus" aria-hidden="true">+</span></button></div><div class="subitems" id="menu-sub-certification"><a class="menu-all" href="/topics/certification/" aria-label="CERTIFICATION 카테고리 전체 글 보기">All <span class="external-arrow" aria-hidden="true">↗</span></a></div></section></div></div></div>
 <div class="search-panel"><label for="site-search">SEARCH</label><input id="site-search" placeholder="게시글 제목 또는 주제 검색" type="search"><p>게시글 제목과 주제로 검색합니다.</p><div class="search-results" id="search-results" role="status" aria-live="polite"></div></div></header>
 <main class="site-container bsc-inner" id="main">{{ content }}</main>
 <footer class="site-container site-footer bsc-inner-footer"><span>© ByteSumCookies</span><span class="bsc-motto">Byte by byte, building security.</span></footer>
 <script>
 (()=>{
 const header=document.querySelector('.site-header');
-const navButtons=[...document.querySelectorAll('.primary-nav button')];
+const navButtons=[...document.querySelectorAll('.primary-nav a[data-target]')];
 const mobileToggle=document.querySelector('#mobile-menu-toggle');
 const searchToggle=document.querySelector('#search-trigger');
 const searchInput=document.querySelector('#site-search');
 const searchResults=document.querySelector('#search-results');
-let selected=null,hovered=null,focusedColumn=null;
+let selected=null,hovered=null,focusedColumn=null,openTimer=null,closeTimer=null;
 const menuColumns=[...document.querySelectorAll('.menu-column')];
 const columnGrid=document.querySelector('.menu-columns');
 const globalLink=document.querySelector('.menu-global');
-// Match each submenu's left edge to the existing heading's rendered x position.
-// The heading/grid themselves never move.
+const isDesktop=()=>window.innerWidth>860;
+function cancelTimers(){clearTimeout(openTimer);clearTimeout(closeTimer);openTimer=null;closeTimer=null;}
 function alignSubmenus(){
- const desktop=window.innerWidth>860;
  navButtons.forEach((button,i)=>{
-  const col=menuColumns[i];
-  if(!col)return;
-  if(!desktop){col.style.removeProperty('--submenu-indent');return;}
+  const col=menuColumns[i];if(!col)return;
+  if(!isDesktop()){col.style.removeProperty('--submenu-indent');return;}
   const dx=button.getBoundingClientRect().left-col.getBoundingClientRect().left;
   col.style.setProperty('--submenu-indent',Math.max(0,dx).toFixed(1)+'px');
  });
 }
 alignSubmenus();
-window.addEventListener('resize',alignSubmenus,{passive:true});
+let wasDesktop=isDesktop();
+window.addEventListener('resize',()=>{alignSubmenus();if(wasDesktop!==isDesktop()){wasDesktop=isDesktop();closeMenu();}},{passive:true});
 if(document.fonts)document.fonts.ready.then(alignSubmenus);
 function syncMenuFocus(){
  const menuOpen=header.classList.contains('menu-open');
@@ -263,46 +265,54 @@ function syncMenuFocus(){
  menuColumns.forEach(col=>col.classList.toggle('is-focused',Boolean(activeKey)&&col.dataset.menu===activeKey));
 }
 function closeMenu(){
- header.classList.remove('menu-open');
- selected=null;hovered=null;focusedColumn=null;
- syncMenuFocus();
+ cancelTimers();header.classList.remove('menu-open');selected=null;hovered=null;focusedColumn=null;syncMenuFocus();
  navButtons.forEach(b=>b.setAttribute('aria-expanded','false'));
  mobileToggle.setAttribute('aria-expanded','false');
- menuColumns.forEach(col=>{
-  col.classList.remove('mobile-expanded');
-  col.querySelector('.menu-column-title').setAttribute('aria-expanded','false');
- });
+ menuColumns.forEach(col=>{col.classList.remove('mobile-expanded');col.querySelector('.mobile-expand-toggle').setAttribute('aria-expanded','false');});
 }
 function closeSearch(){header.classList.remove('search-open');searchToggle.setAttribute('aria-expanded','false');}
 function openMenu(btn){
- closeSearch();
- if(header.classList.contains('menu-open')&&selected===btn){closeMenu();return;}
- header.classList.add('menu-open');
- selected=btn;focusedColumn=null;
- syncMenuFocus();
+ cancelTimers();closeSearch();header.classList.add('menu-open');selected=btn;focusedColumn=null;syncMenuFocus();
  navButtons.forEach(b=>b.setAttribute('aria-expanded',String(b===btn)));
- mobileToggle.setAttribute('aria-expanded','true');
+ mobileToggle.setAttribute('aria-expanded',String(!isDesktop()));
 }
 navButtons.forEach(b=>{
- b.addEventListener('click',()=>openMenu(b));
- b.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse'){hovered=b;focusedColumn=null;syncMenuFocus();}});
- b.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse'){hovered=null;syncMenuFocus();}});
+ b.addEventListener('pointerenter',e=>{
+  if(e.pointerType!=='mouse'||!isDesktop())return;
+  clearTimeout(closeTimer);clearTimeout(openTimer);hovered=b;focusedColumn=null;syncMenuFocus();
+  openTimer=setTimeout(()=>{if(hovered===b&&isDesktop())openMenu(b);},180);
+ });
+ b.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse'){clearTimeout(openTimer);hovered=null;syncMenuFocus();}});
+ b.addEventListener('focusin',()=>{if(isDesktop()&&!header.classList.contains('search-open')){hovered=null;openMenu(b);}});
+});
+header.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse')clearTimeout(closeTimer);});
+header.addEventListener('pointerleave',e=>{
+ if(e.pointerType!=='mouse'||!isDesktop())return;
+ clearTimeout(openTimer);clearTimeout(closeTimer);closeTimer=setTimeout(closeMenu,250);
 });
 menuColumns.forEach(col=>{
  col.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse'&&header.classList.contains('menu-open')){focusedColumn=col.dataset.menu;syncMenuFocus();}});
  col.addEventListener('focusin',()=>{if(header.classList.contains('menu-open')){focusedColumn=col.dataset.menu;syncMenuFocus();}});
 });
-columnGrid.addEventListener('pointermove',e=>{if(e.pointerType!=='mouse')return;const col=e.target.closest('.menu-column');const key=col?.dataset.menu||null;if(focusedColumn!==key){focusedColumn=key;syncMenuFocus();}});
+columnGrid.addEventListener('pointermove',e=>{
+ if(e.pointerType!=='mouse')return;
+ const col=e.target.closest('.menu-column'),key=col?.dataset.menu||null;
+ if(focusedColumn!==key){focusedColumn=key;syncMenuFocus();}
+});
 columnGrid.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse'){focusedColumn=null;syncMenuFocus();}});
 globalLink.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse'){focusedColumn=null;syncMenuFocus();}});
 mobileToggle.addEventListener('click',()=>{if(header.classList.contains('menu-open'))closeMenu();else openMenu(null);});
-document.querySelectorAll('.menu-column-title').forEach(btn=>btn.addEventListener('click',()=>{
+document.querySelectorAll('.mobile-expand-toggle').forEach(btn=>btn.addEventListener('click',()=>{
  const col=btn.closest('.menu-column'),was=col.classList.contains('mobile-expanded');
- menuColumns.forEach(c=>{c.classList.remove('mobile-expanded');c.querySelector('.menu-column-title').setAttribute('aria-expanded','false');});
+ menuColumns.forEach(c=>{c.classList.remove('mobile-expanded');c.querySelector('.mobile-expand-toggle').setAttribute('aria-expanded','false');});
  if(!was){col.classList.add('mobile-expanded');btn.setAttribute('aria-expanded','true');}
 }));
+searchToggle.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse'&&isDesktop())closeMenu();});
+searchToggle.addEventListener('focusin',()=>{if(isDesktop())closeMenu();});
 searchToggle.addEventListener('click',()=>{closeMenu();const open=header.classList.toggle('search-open');searchToggle.setAttribute('aria-expanded',String(open));if(open)searchInput.focus();});
 document.addEventListener('pointerdown',e=>{if(!header.contains(e.target)){closeMenu();closeSearch();}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeMenu();closeSearch();}});
+
 
 let cachedPosts=null;
 async function loadPosts(){if(cachedPosts!==null)return cachedPosts;try{const r=await fetch('/search.json',{cache:'no-store'});if(!r.ok)throw Error('search');const data=await r.json();cachedPosts=Array.isArray(data.posts)?data.posts:[]}catch(e){cachedPosts=[]}return cachedPosts}
