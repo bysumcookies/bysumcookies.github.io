@@ -1,3 +1,7 @@
+settings:
+  content:
+    merge: true
+
 # Pages CMS configuration: editing layer for this Jekyll blog.
 media:
   input: assets/img/posts
