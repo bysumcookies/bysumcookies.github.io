@@ -8,6 +8,6 @@ permalink: /tags/
 {% assign sorted_tags = site.tags | sort %}
 <div class="bsc-post-list">
 {% for item in sorted_tags %}
-<article class="bsc-entry"><a href="/all/"><h2>{{ item[0] | escape }}</h2><p class="bsc-excerpt">{{ item[1].size }}개 게시글</p></a></article>
+<article class="bsc-entry"><a href="/all/?tag={{ item[0] | url_encode }}"><h2>{{ item[0] | escape }}</h2><p class="bsc-excerpt">{{ item[1].size }}개 게시글</p></a></article>
 {% endfor %}
 </div>
