@@ -29,6 +29,14 @@ layout: bsc
 (()=>{
  const body=document.getElementById('bsc-article-body');
  if(!body)return;
+ // Keep all tables full-width; only their individual container scrolls on narrow screens.
+ for(const table of body.querySelectorAll('table')){
+  if(table.parentElement?.classList.contains('table-scroll'))continue;
+  const scroller=document.createElement('div');
+  scroller.className='table-scroll';
+  table.before(scroller);
+  scroller.appendChild(table);
+ }
  const headings=[...body.querySelectorAll('h2,h3')],seen=new Set();
  for(const [i,h] of headings.entries()){
   let id=h.id||'section-'+String(i+1).padStart(2,'0');
