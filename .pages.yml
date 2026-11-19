@@ -27,6 +27,9 @@ content:
         label: 제목
         type: string
         required: true
+      - name: description
+        label: 검색 결과 설명 (선택)
+        type: string
       - name: date
         label: 최초 게시일
         type: date
