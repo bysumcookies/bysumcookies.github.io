@@ -30,3 +30,17 @@ assets/js/dist
 *~
 .DS_Store
 Thumbs.db
+
+# Credentials and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+id_rsa*
+id_ed25519*
+credentials.json
+service-account*.json

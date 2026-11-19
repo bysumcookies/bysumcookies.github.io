@@ -4,7 +4,7 @@ title: PORTFOLIO
 permalink: /topics/portfolio/
 ---
 <nav class="bsc-breadcrumb" aria-label="현재 위치"><a href="/">HOME</a> &nbsp;/&nbsp; <span>PORTFOLIO</span><span id="bsc-crumb-extra"></span></nav>
-<section class="bsc-topic-banner" aria-label="PORTFOLIO"><img class="bsc-topic-image" src="/assets/img/banners/v2/portfolio-1x.webp" alt="" loading="eager"><h1>PORTFOLIO</h1></section>
+<section class="bsc-topic-banner" aria-label="PORTFOLIO"><img class="bsc-topic-image" src="/assets/img/banners/portfolio-desktop-1x.webp" alt="" loading="eager"><h1>PORTFOLIO</h1></section>
 {% assign matching = site.posts | where_exp: "post", "post.categories contains 'Portfolio'" | sort: "date" | reverse %}
 <div class="bsc-topic-intro"><p>직접 구축하고 실험한 프로젝트의 과정과 결과를 모았습니다.</p><span class="bsc-topic-count">{{ matching.size }}개 게시글</span></div>
 <nav class="bsc-filters" aria-label="하위 주제 필터"><button class="bsc-filter is-current" type="button" data-topic="">전체</button>

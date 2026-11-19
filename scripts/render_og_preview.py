@@ -5,13 +5,11 @@ recreated with different fonts or spacing.
 """
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont, ImageOps
-import shutil
 
 ROOT = Path(__file__).resolve().parent.parent
 ASSETS = ROOT / "assets"
 SOURCE = ASSETS / "img/brand/logo.webp"
-OUTPUT = ASSETS / "og-preview-v2.png"
-PREVIOUS = ASSETS / "og-preview.png"
+OUTPUT = ASSETS / "img/brand/og-image.png"
 W, H = 1200, 630
 BG = (5, 5, 5)
 FG = (248, 248, 248)
@@ -65,8 +63,6 @@ def render():
         check.verify()
     with Image.open(OUTPUT) as check:
         assert check.size == (1200, 630) and check.format == "PNG"
-    # Repair the formerly damaged old path as well, for existing clients.
-    shutil.copyfile(OUTPUT, PREVIOUS)
     print("OG preview validated:", OUTPUT, OUTPUT.stat().st_size, "bytes")
 if __name__ == "__main__":
     render()

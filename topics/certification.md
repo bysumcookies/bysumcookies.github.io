@@ -4,7 +4,7 @@ title: CERTIFICATION
 permalink: /topics/certification/
 ---
 <nav class="bsc-breadcrumb" aria-label="현재 위치"><a href="/">HOME</a> &nbsp;/&nbsp; <span>CERTIFICATION</span><span id="bsc-crumb-extra"></span></nav>
-<section class="bsc-topic-banner flip-image" aria-label="CERTIFICATION"><img class="bsc-topic-image" src="/assets/img/banners/v2/certification-1x.webp" alt="" loading="eager"><h1>CERTIFICATION</h1></section>
+<section class="bsc-topic-banner flip-image" aria-label="CERTIFICATION"><img class="bsc-topic-image" src="/assets/img/banners/certification-desktop-1x.webp" alt="" loading="eager"><h1>CERTIFICATION</h1></section>
 <div class="bsc-topic-intro"><p>취득한 자격증과 공식 인증 배지를 정리합니다.</p><span class="bsc-topic-count">{{ site.data.bsc_certifications.size }}개 자격</span></div>
 <nav class="bsc-filters" aria-label="자격증 종류 필터"><button class="bsc-filter is-current" data-filter="전체">전체</button><button class="bsc-filter" data-filter="클라우드">클라우드</button><button class="bsc-filter" data-filter="국가기술자격">국가기술자격</button><button class="bsc-filter" data-filter="기타 자격">기타 자격</button></nav>
 <div class="bsc-gallery" id="bsc-cert-gallery">{% for cert in site.data.bsc_certifications %}

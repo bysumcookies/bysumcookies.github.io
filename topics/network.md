@@ -4,7 +4,7 @@ title: NETWORK
 permalink: /topics/network/
 ---
 <nav class="bsc-breadcrumb" aria-label="현재 위치"><a href="/">HOME</a> &nbsp;/&nbsp; <span>NETWORK</span><span id="bsc-crumb-extra"></span></nav>
-<section class="bsc-topic-banner flip-image" aria-label="NETWORK"><img class="bsc-topic-image" src="/assets/img/banners/v2/network-left-1x.webp" alt="" loading="eager"><h1>NETWORK</h1></section>
+<section class="bsc-topic-banner flip-image" aria-label="NETWORK"><img class="bsc-topic-image" src="/assets/img/banners/network-desktop-1x.webp" alt="" loading="eager"><h1>NETWORK</h1></section>
 {% assign matching = site.posts | where_exp: "post", "post.categories contains 'Network'" | sort: "date" | reverse %}
 <div class="bsc-topic-intro"><p>네트워크 구조와 프로토콜, 통신의 기본 원리를 기록합니다.</p><span class="bsc-topic-count">{{ matching.size }}개 게시글</span></div>
 <nav class="bsc-filters" aria-label="하위 주제 필터"><button class="bsc-filter is-current" type="button" data-topic="">전체</button></nav>
